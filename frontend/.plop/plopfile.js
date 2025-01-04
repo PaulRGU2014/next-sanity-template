@@ -11,7 +11,7 @@ module.exports = (plop) => {
         type: 'list',
         name: 'type',
         message: 'What type of block component you want it to be?',
-        choices: ['Hero component', 'Carousel component', 'CTA component', 'Other component'],
+        choices: ['Hero component', 'Carousel component', 'Media component', 'Other component'],
       },
     ],
     actions: function(data) {
@@ -77,7 +77,7 @@ module.exports = (plop) => {
           pattern: /\/\/associateHere/,
           template: '\tS.documentTypeListItem("{{camelCase name}}"),',
         });
-      } else if (data.type === 'CTA component') {
+      } else if (data.type === 'Media component') {
         actions.push({
           type: 'append',
           path: '../sanity.config.ts',

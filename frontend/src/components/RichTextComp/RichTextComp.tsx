@@ -11,15 +11,15 @@ interface RichTextCompProps {
 export default function RichTextComp({content}: RichTextCompProps) {
   return(
     <InViewAnim>
-      <div className={styles.component}>
+      <div className={`${styles.component} ${content.theme === 'dark' ? styles.dark : ""}`}>
         <div className={styles.wrapper}>
           { !!content.maxWidth ? 
             <div style={{maxWidth : `${content.maxWidth}px`}}>
-              <RichTextUtil  html={content.content} className={styles.component}/>
+              <RichTextUtil  html={content.content} className={styles.richtext}/>
             </div>
             :
-            <div style={{maxWidth : '645px'}}>
-              <RichTextUtil  html={content.content} className={styles.component}/>
+            <div style={{maxWidth : 'unset'}}>
+              <RichTextUtil  html={content.content} className={styles.richtext}/>
             </div>
           }
         </div>

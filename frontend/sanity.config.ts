@@ -56,12 +56,12 @@ export default defineConfig({
                 S.list()
                   .title("Hero Components")
                   .items([
-                    S.documentTypeListItem("fullPageHero"),
-                    S.documentTypeListItem("fullPageZoom"),
                     S.documentTypeListItem("hero"),
                     S.documentTypeListItem("heroBannerImg"),
-                    S.documentTypeListItem("heroGallery"),
                     S.documentTypeListItem("heroHalfPage"),
+                    S.documentTypeListItem("heroGallery"),
+                    S.documentTypeListItem("fullPageHero"),
+                    S.documentTypeListItem("fullPageZoom"),
                     //addHere
                   ])
               ),
@@ -71,18 +71,21 @@ export default defineConfig({
                 S.list()
                   .title("Carousel Components")
                   .items([
+                    S.documentTypeListItem("ctasCarousel"),
+                    S.documentTypeListItem("contentBubbles"),
                     S.documentTypeListItem("gridLinksCarousel"),
                     //associateHere
                   ])
               ),
             S.listItem()
-            .title("CTA Components")
+            .title("Media Components")
             .child(
               S.list()
-                .title("CTA Components")
+                .title("Media Components")
                 .items([
                   //assignHere
-	S.documentTypeListItem("ctaTitleImg")
+	S.documentTypeListItem("ctaTitleImg"),
+  S.documentTypeListItem("textTwoImages"),
                 ])
             ),
             S.listItem()
@@ -92,8 +95,9 @@ export default defineConfig({
                   .title("Other Components")
                   .items([
                     //appendHere
-	S.documentTypeListItem("twoColumnSlider"),
-	S.documentTypeListItem("contentBubbles")
+  S.documentTypeListItem("hardcodedBlocks"),
+  S.documentTypeListItem("richTextComp"),
+  S.documentTypeListItem("twoColumnSlider"),
                   ])
               ),
           ]),

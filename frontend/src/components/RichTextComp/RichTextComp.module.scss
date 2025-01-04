@@ -2,6 +2,10 @@
 
 .component {
   width: 100%;
+  background-color: $white;
+  &.dark {
+    background-color: $black;
+  }
 }
 
 .wrapper {
@@ -18,4 +22,11 @@
     @include scroll-animation($anim: fromLeft, $sequence: 60ms, $speed: 1000ms);
   }
   @include scroll-animation($anim: fromLeft, $sequence: 60ms, $speed: 1000ms);
+}
+
+.richtext > * {
+  color: $black;
+  .dark & {
+    color: $white;
+  }
 }
