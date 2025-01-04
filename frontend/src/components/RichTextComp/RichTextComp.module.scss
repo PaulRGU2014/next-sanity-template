@@ -11,9 +11,10 @@
 .wrapper {
   @include centered($max-width);
   margin: {
-    top: $standard-vertical-spacing;
-    bottom: $standard-vertical-spacing;
+    top: 0;
+    bottom: 0;
   }
+  padding: $standard-vertical-spacing 0;
   h4 {
     margin-bottom: 0;
     @include scroll-animation($anim: fromLeft, $sequence: 60ms, $speed: 1000ms);
