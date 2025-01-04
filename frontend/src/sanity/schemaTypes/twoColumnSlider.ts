@@ -76,6 +76,7 @@ export const twoColumnSlider = defineType({
       type: 'array',
       of: [{type: 'string'}],
       initialValue: ['#2D3C58', '#86A96B', '#D18810', '#BBBDBF', '#3F687B', '#5BBDEB', '#F05133'],
+      validation: Rule => Rule.length(7),
     }),
   ],
 })
