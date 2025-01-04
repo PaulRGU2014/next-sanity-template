@@ -34,7 +34,7 @@
     gap: 30px;
     padding: 60px 0;
   }
-  @include responsive (md) {
+  @include responsive (lg) {
     flex-direction: column;
     gap: 25px;
     padding: 30px 0;
@@ -46,16 +46,19 @@
   position: relative;
   z-index: 2;
   color: $white;
-  @include responsive (md) {
+  @include responsive (lg) {
     width: 100%;
   }
 }
 
-.cta{
+.cta {
   width: 40%;
   z-index: 3;
   overflow: hidden;
-  @include responsive (md) {
-    width: 100%;
+  border: none;
+  
+  @include responsive (lg) {
+    width: fit-content;
+    align-self: center;
   }
 }
