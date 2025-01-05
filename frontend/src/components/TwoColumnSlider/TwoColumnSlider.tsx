@@ -22,6 +22,12 @@ interface TwoColumnSliderProps {
       title: string;
       subtitle: string;
       desc: string;
+      image?: {
+        asset: {
+          _ref: string;
+        };
+        alt?: string;
+      };
     }[];
   };
 }
@@ -97,6 +103,8 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
     afterChange: (current: number) => setActiveSlideIndex(current),
   };
 
+  console.log('activeSlideIndex', activeSlideIndex);
+
   return (
     <InViewAnim><div className={styles.component}>
       <div className={styles.colorsLine}>
@@ -120,22 +128,13 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
         >
           <div className={styles.primary_wrapper}>
             <section className={`${styles.primary} ${styles.isActive}`}>
-              {content.icon?.asset._ref &&
-                <Image
-                  className={styles.icon}
-                  src={content.icon?.asset._ref}
-                  alt={content.icon?.alt || 'default alt text'}
-                  objectFit="contain"
-                  objectPosition="top left"
-                />
-              }
-              <h5>
-                {content.title}
-              </h5>
-              <RichTextUtil
-                className={styles.desc}
-                html={content.body}
-              />
+            {!!content.slides[activeSlideIndex].image?.asset._ref && <Image
+              className={styles.image}
+              src={content.slides[activeSlideIndex].image?.asset._ref}
+              alt={content.slides[activeSlideIndex].image?.alt || 'default alt text'}
+              objectFit="contain"
+              objectPosition="top left"
+            />}
             </section>
           </div>
           <div className={styles.colorsLine_mobile}>
@@ -152,6 +151,7 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
           </div>
           <Slider
             ref={sliderRef}
+            // beforeChange={onSlideUpdate}
             {...sliderSetting}
           >
             {content.slides.map((slide: { title: string; subtitle: string; desc: any }, index: number) => (

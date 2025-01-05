@@ -11,37 +11,38 @@ export const twoColumnSlider = defineType({
       type: 'text',
       rows: 3,
       readOnly: true,
-      initialValue: 'Component Information Description',
+      initialValue: 'This component consists of two columns. The left column contains image of slides. The right column contains body text of the slide.',
     }),
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+      description: 'This title is for referencr only. It will not be displayed on the website.',
     }),
-    defineField({
-      name: 'icon',
-      title: 'Icon',
-      type: 'image',
-      options: {
-        accept: 'image/webp, image/svg+xml',
-      },
-      description: 'Accept only .webp or .svg format image.',
-      fields: [
-        {
-          name: 'alt',
-          title: 'Image Alt Text',
-          type: 'string',
-          validation: Rule => Rule.required(),
-          initialValue: 'Image alt text',
-        },
-      ],
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'array',
-      of: [{type: 'block'}],
-    }),
+    // defineField({
+    //   name: 'icon',
+    //   title: 'Icon',
+    //   type: 'image',
+    //   options: {
+    //     accept: 'image/webp, image/svg+xml',
+    //   },
+    //   description: 'Accept only .webp or .svg format image.',
+    //   fields: [
+    //     {
+    //       name: 'alt',
+    //       title: 'Image Alt Text',
+    //       type: 'string',
+    //       validation: Rule => Rule.required(),
+    //       initialValue: 'Image alt text',
+    //     },
+    //   ],
+    // }),
+    // defineField({
+    //   name: 'body',
+    //   title: 'Body',
+    //   type: 'array',
+    //   of: [{type: 'block'}],
+    // }),
     defineField({
       name: 'slides',
       title: 'Slides',
@@ -66,6 +67,24 @@ export const twoColumnSlider = defineType({
               type: 'array',
               of: [{type: 'block'}],
             }),
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                accept: 'image/webp',
+              },
+              description: 'Accept only .webp format image.',
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Image Alt Text',
+                  type: 'string',
+                  validation: Rule => Rule.required(),
+                  initialValue: 'Image alt text',
+                },
+              ],
+            }),
           ],
         },
       ],
@@ -75,7 +94,7 @@ export const twoColumnSlider = defineType({
       title: 'Colors',
       type: 'array',
       of: [{type: 'string'}],
-      initialValue: ['#2D3C58', '#86A96B', '#D18810', '#BBBDBF', '#3F687B', '#5BBDEB', '#F05133'],
+      initialValue: ['#6c757d', '#03071E', '#FFBA08', '#370617', '#F48C06', '#6A040F', '#370617'],
       validation: Rule => Rule.length(7),
     }),
   ],

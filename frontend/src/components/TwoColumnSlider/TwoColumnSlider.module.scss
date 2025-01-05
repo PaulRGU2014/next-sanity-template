@@ -70,6 +70,7 @@
     opacity: 0;
     transition: all 1s $ease-out-quint;
     max-width: 320px;
+    width: 100%;
     &_wrapper{
         display: flex;
         flex-direction: column;
@@ -158,11 +159,11 @@
     }
 }
 
-.icon{
+.image{
     display: flex;
     position: relative;
     width: 100%;
-    height: 72px;
+    padding-bottom: 75%;
     margin-bottom: 35px;
 }
 
