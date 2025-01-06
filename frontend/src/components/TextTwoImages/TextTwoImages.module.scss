@@ -40,7 +40,7 @@
     position: absolute;
     width: calc(54 / 66 * 100%);
     padding-top: calc(54 / 66 * 100%);
-    @include scroll-animation($anim: fromTop, $sequence: 60ms, $speed: 1000ms);
+    @include scroll-animation($anim: fromTop, $sequence: 100ms, $speed: 1000ms);
 }
 
 .image2{
