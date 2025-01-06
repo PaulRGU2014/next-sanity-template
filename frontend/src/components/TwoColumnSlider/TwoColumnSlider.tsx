@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, use } from 'react';
 import styles from './TwoColumnSlider.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'
 import Slider from "react-slick";
@@ -66,6 +66,8 @@ function ArrowNext(props: { className?: string; style?: React.CSSProperties; onC
 
 export default function SliderColors({ content }: TwoColumnSliderProps) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [animSlideIndex, setAnimSlideIndex] = useState(0);
+  const [finalSlideIndex, setFinalSlideIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState<number | undefined>(undefined);
   const sliderRef = useRef<Slider>(null);
 
@@ -76,6 +78,15 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimSlideIndex(activeSlideIndex);
+    }, 500);
+    setTimeout(() => {
+      setFinalSlideIndex(activeSlideIndex);
+    }, 1000);
+  }, [activeSlideIndex]);
 
 
   const sliderSetting = {
@@ -104,6 +115,7 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
   };
 
   console.log('activeSlideIndex', activeSlideIndex);
+  console.log('animSlideIndex', animSlideIndex);
 
   return (
     <InViewAnim><div className={styles.component}>
@@ -127,13 +139,15 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
           }}
         >
           <div className={styles.primary_wrapper}>
-            <section className={`${styles.primary} ${styles.isActive}`}>
-            {!!content.slides[activeSlideIndex].image?.asset._ref && <Image
+            <section className={`${styles.primary}
+             ${animSlideIndex === activeSlideIndex ? styles.isAnim : ""}
+             ${finalSlideIndex === activeSlideIndex ? styles.isActive : ""}`}>
+            {!!content.slides[finalSlideIndex].image?.asset._ref && <Image
               className={styles.image}
-              src={content.slides[activeSlideIndex].image?.asset._ref}
-              alt={content.slides[activeSlideIndex].image?.alt || 'default alt text'}
-              objectFit="contain"
-              objectPosition="top left"
+              src={content.slides[finalSlideIndex].image?.asset._ref}
+              alt={content.slides[finalSlideIndex].image?.alt || 'default alt text'}
+              objectFit="cover"
+              objectPosition="center"
             />}
             </section>
           </div>
