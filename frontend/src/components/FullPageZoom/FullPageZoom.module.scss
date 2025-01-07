@@ -36,6 +36,9 @@
     );
     z-index: 1;
   }
+  &.light::before {
+    background-color: $white;
+  }
 }
 
 .media {

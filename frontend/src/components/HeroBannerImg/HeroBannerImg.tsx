@@ -63,7 +63,7 @@ export default function HeroBannerImg({ content }: HeroBannerImgProps) {
   return (
     <InViewAnim>
       <div className={styles.component}>
-        <div className={styles.overlay}></div>
+        <div className={`${styles.overlay} ${content.is_curved===false ? styles.noCurve : ""}`}></div>
         <Image
           className={styles.image}
           src={content.image?.asset?._ref}

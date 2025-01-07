@@ -63,5 +63,14 @@ export const fullPageZoom = defineType({
       ],
       hidden: ({ parent }) => parent?.media_source !== 'file',
     }),
+    defineField({
+      name: 'theme',
+      type: 'string',
+      options: {
+        list: ['light', 'dark'],
+        layout: 'radio',
+      },
+      initialValue: 'light',
+    }),
   ],
 })

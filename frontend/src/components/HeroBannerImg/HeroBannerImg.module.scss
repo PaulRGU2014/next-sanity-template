@@ -22,6 +22,9 @@
     background-color: $white;
     clip-path: ellipse(55% 70% at 50% 110%);
   }
+  &.noCurve::before {
+    clip-path: none;
+  }
   @include responsive (sm) {
     &::before {
       clip-path: ellipse(55% 50% at 50% 110%);

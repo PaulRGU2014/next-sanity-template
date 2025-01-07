@@ -41,7 +41,7 @@ export default function FullPageZoom({ content }: { content: any }) {
 
   return (
     <InViewAnim>
-      <div className={styles.component}>
+      <div className={`${styles.component} ${content.theme==='light' ? styles.light : ''}`}>
         <div className={styles.media}>
           <ReactPlayer
             className={styles.reactPlayer}
