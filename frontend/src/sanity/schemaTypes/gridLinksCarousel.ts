@@ -30,7 +30,12 @@ export const gridLinksCarousel = defineType({
             }),
             defineField({
               name: 'image',
+              title: 'Image',
               type: 'image',
+              options: {
+                accept: 'image/webp',
+              },
+              description: 'Accept only .webp format image.',
               fields: [
                 {
                   name: 'alt',

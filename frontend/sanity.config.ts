@@ -75,6 +75,7 @@ export default defineConfig({
                     S.documentTypeListItem("contentBubbles"),
                     S.documentTypeListItem("gridLinksCarousel"),
                     //associateHere
+	S.documentTypeListItem("logoCarousel"),
                   ])
               ),
             S.listItem()

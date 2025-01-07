@@ -1,6 +1,7 @@
 "use client"
 
 //importHere
+	import LogoCarousel from './LogoCarousel/LogoCarousel';
 	import TextImageButton from './TextImageButton/TextImageButton';
 	import TwoColumnSlider from './TwoColumnSlider/TwoColumnSlider';
 	import ContentBubbles from './ContentBubbles/ContentBubbles';
@@ -37,6 +38,7 @@ function HardcodedComponent ({ block_title, ...props }: { block_title: keyof typ
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
 //associateHere
+	logoCarousel: LogoCarousel,
 	textImageButton: TextImageButton,
 	twoColumnSlider: TwoColumnSlider,
 	contentBubbles: ContentBubbles,
