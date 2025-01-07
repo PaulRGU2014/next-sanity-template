@@ -85,6 +85,7 @@ export default defineConfig({
                 .items([
                   //assignHere
 	S.documentTypeListItem("ctaTitleImg"),
+  S.documentTypeListItem("textImageButton"),
   S.documentTypeListItem("textTwoImages"),
                 ])
             ),

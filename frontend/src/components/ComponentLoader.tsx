@@ -1,6 +1,7 @@
 "use client"
 
 //importHere
+	import TextImageButton from './TextImageButton/TextImageButton';
 	import TwoColumnSlider from './TwoColumnSlider/TwoColumnSlider';
 	import ContentBubbles from './ContentBubbles/ContentBubbles';
 	import CtaTitleImg from './CtaTitleImg/CtaTitleImg';
@@ -36,6 +37,7 @@ function HardcodedComponent ({ block_title, ...props }: { block_title: keyof typ
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
 //associateHere
+	textImageButton: TextImageButton,
 	twoColumnSlider: TwoColumnSlider,
 	contentBubbles: ContentBubbles,
 	ctaTitleImg: CtaTitleImg,

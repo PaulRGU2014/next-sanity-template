@@ -1,5 +1,6 @@
 import { type SchemaTypeDefinition } from "sanity";
 //importHere
+	import { textImageButton } from './textImageButton';
 	import { twoColumnSlider } from './twoColumnSlider';
 	import { contentBubbles } from './contentBubbles';
 	import { ctaTitleImg } from './ctaTitleImg';
@@ -21,6 +22,7 @@ import { gridLinksCarousel } from "./gridLinksCarousel";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
   //associateHere
+textImageButton,
 twoColumnSlider,
 contentBubbles,
 ctaTitleImg,
