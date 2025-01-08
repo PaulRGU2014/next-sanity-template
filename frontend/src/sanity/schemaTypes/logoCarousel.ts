@@ -22,7 +22,17 @@ export const logoCarousel = defineType({
       type: 'array',
       of: [{
         type: 'object',
+        preview:{
+          select: {
+            title: 'title',
+            media: 'logo',
+          },
+        },
         fields: [
+          defineField({
+            name: 'title',
+            type: 'string',
+          }),
           defineField({
             name: 'logo',
             title: 'Image',
