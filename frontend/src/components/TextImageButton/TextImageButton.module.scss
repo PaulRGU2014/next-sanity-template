@@ -1,12 +1,68 @@
-@use '../../scss/helpers/import' as *;
+@use "../../scss/helpers/import" as *;
 
-.component{}
-.wrapper{
-    @include centered($max-width);
-    & {
-        margin: {
-            top: $standard-vertical-spacing;
-            bottom: $standard-vertical-spacing;
-        };
+.component {
+}
+.wrapper {
+  @include centered($max-width);
+  & {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: {
+      top: $standard-vertical-spacing;
+      bottom: $standard-vertical-spacing;
     }
+    height: auto;
+    gap: 60px;
+  }
+  &.right {
+    flex-direction: row-reverse;
+  }
+  @include responsive(md) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 30px;
+    &.right {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  padding-top: 50%;
+  max-height: 780px;
+  position: relative;
+  overflow: hidden;
+  @include scroll-animation(
+    $anim: fromTop,
+    $sequence: 100ms,
+    $speed: 1000ms,
+    $delay: 250ms
+  );
+
+}
+
+.text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @include scroll-animation($anim: fromTop, $sequence: 60ms, $speed: 1000ms);
+  @include responsive(md) {
+    width: 100%;
+    max-width: 480px;
+    margin-left: 0;
+  }
+}
+
+.link {
+  @extend %button;
+  width: fit-content;
+  margin: 0;
+  @include responsive (xs) {
+    width: calc(100% - 60px);
+  }
 }
