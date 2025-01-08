@@ -44,7 +44,7 @@ const settings1 = {
 };
 
 const settings2 = {
-  ...settings1, 
+  ...settings1,
   className: styles.carousel2,
   rtl: true, // Right to left
 };
@@ -54,7 +54,7 @@ export default function LogoCarousel({ content }: LogoCarouselProps) {
   return (
     <InViewAnim><div className={styles.component}>
       <div className={styles.wrapper}>
-        <h4>{content.title}</h4>
+        <h3>{content.title}</h3>
         <Slider {...settings1}>
           {content.logos?.slice(0, Math.ceil(content.logos.length / 2)).map((logo: any, index: number) => (
             <Image

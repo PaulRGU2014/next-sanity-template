@@ -27,7 +27,7 @@ $slide-gap-mobile-2: calc(#{$slide-gap-start} * 0.5);
   }
 
   :global(.slick-list) {
-    left: calc($slide-gap-start / -2);  
+    left: calc($slide-gap-start / -2);
   }
 
   @include responsive(lg) {
@@ -51,7 +51,7 @@ $slide-gap-mobile-2: calc(#{$slide-gap-start} * 0.5);
     :global(.slick-list) {
       left: calc($slide-gap-mobile-2 / -2);
     }
-  }  
+  }
 }
 
 .wrapper {
@@ -65,7 +65,7 @@ $slide-gap-mobile-2: calc(#{$slide-gap-start} * 0.5);
   display: flex;
   flex-direction: column;
   gap: 30px;
-  h4{
+  h3 {
     text-align: center;
     margin: 0;
   }
@@ -77,7 +77,7 @@ $slide-gap-mobile-2: calc(#{$slide-gap-start} * 0.5);
   );
 }
 
-.carousel{
+.carousel {
   display: flex;
   justify-content: center;
   align-items: center;
