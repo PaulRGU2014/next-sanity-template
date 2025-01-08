@@ -28,9 +28,9 @@ export const logoCarousel = defineType({
             title: 'Image',
             type: 'image',
             options: {
-              accept: 'image/webp, image/svg+xml',
+              accept: 'image/png, image/svg+xml',
             },
-            description: 'Accept only .webp and .svg format image.',
+            description: 'Accept only .png and .svg format image.',
             fields: [
               {
                 name: 'alt',
