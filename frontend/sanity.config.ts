@@ -85,6 +85,7 @@ export default defineConfig({
                 .title("Media Components")
                 .items([
                   //assignHere
+	S.documentTypeListItem("galleryLogo"),
 	S.documentTypeListItem("ctaTitleImg"),
   S.documentTypeListItem("textImageButton"),
   S.documentTypeListItem("textTwoImages"),
