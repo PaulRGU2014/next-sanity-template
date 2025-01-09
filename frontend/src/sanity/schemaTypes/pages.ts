@@ -24,6 +24,7 @@ export const pages = defineType({
       type: 'array',
       of: [
         {
+          title: 'Component',
           type: 'reference',
           to: [
           //associateHere
