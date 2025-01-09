@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const logoCarousel = defineType({
   name: 'logoCarousel',
   title: 'Logo Carousel',
   type: 'document',
+  components: {preview: ComponentName('Logo Carousel')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },   
   fields: [
     defineField({
       name: 'info',

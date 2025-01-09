@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const twoColumnSlider = defineType({
   name: 'twoColumnSlider',
   title: 'TwoColumnSlider',
   type: 'document',
+  components: {preview: ComponentName('CTAs Carousel')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },      
   fields: [
     defineField({
       name: 'info',

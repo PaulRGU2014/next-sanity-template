@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const ctaTitleImg = defineType({
   name: 'ctaTitleImg',
   title: 'CTATitleImg',
   type: 'document',
+  components: {preview: ComponentName('CTA Title Img')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },    
   fields: [
     defineField({
       name: 'info',

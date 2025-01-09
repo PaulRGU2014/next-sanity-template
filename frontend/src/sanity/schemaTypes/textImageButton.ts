@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const textImageButton = defineType({
   name: 'textImageButton',
   title: 'Text Image Button',
   type: 'document',
+  components: {preview: ComponentName('Text Image Button')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },    
   fields: [
     defineField({
       name: 'info',

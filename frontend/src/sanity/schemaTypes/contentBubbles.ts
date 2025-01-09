@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const contentBubbles = defineType({
   name: 'contentBubbles',
   title: 'ContentBubbles',
   type: 'document',
+  components: {preview: ComponentName('Content Bubbles')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },  
   fields: [
     defineField({
       name: 'info',

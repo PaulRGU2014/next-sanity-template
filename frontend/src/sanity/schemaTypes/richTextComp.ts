@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const richTextComp = defineType({
   name: 'richTextComp',
   title: 'Rich-Text Component',
   type: 'document',
+  components: {preview: ComponentName('Rich-Text Component')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },  
   fields: [
     defineField({
       name: 'title',

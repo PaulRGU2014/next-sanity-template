@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const hardcodedBlocks = defineType({
   name: 'hardcodedBlocks',
   title: 'Hardcoded Blocks',
   type: 'document',
+  components: {preview: ComponentName('Hardcoded Blocks')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },      
   fields: [
     defineField({
       name: 'info',

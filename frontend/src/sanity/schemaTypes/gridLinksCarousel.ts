@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const gridLinksCarousel = defineType({
   name: 'gridLinksCarousel',
   title: 'Grid Links Carousel',
   type: 'document',
+  components: {preview: ComponentName('Grid Links Carousel')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },    
   fields: [
     defineField({
       name: 'title',

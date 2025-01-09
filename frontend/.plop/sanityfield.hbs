@@ -1,9 +1,16 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const {{camelCase name}} = defineType({
   name: '{{camelCase name}}',
   title: '{{titleCase name}}',
   type: 'document',
+  components: {preview: ComponentName('{{titleCase name}}')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },
   fields: [
     defineField({
       name: 'info',

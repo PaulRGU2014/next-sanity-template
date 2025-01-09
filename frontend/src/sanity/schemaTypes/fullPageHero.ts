@@ -1,9 +1,16 @@
 import { defineField, defineType } from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const fullPageHero = defineType({
   name: 'fullPageHero',
   title: 'Full Page Hero',
   type: 'document',
+  components: {preview: ComponentName('Full Page Hero')},
+  preview: {
+    select: {
+      title: 'title',
+    },
+  },      
   fields: [
     defineField({
       name: 'title',

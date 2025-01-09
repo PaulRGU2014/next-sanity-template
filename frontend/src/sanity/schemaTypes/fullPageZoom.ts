@@ -1,9 +1,17 @@
 import {defineField, defineType} from 'sanity'
+import {ComponentName} from './preview/ComponentName'
 
 export const fullPageZoom = defineType({
   name: 'fullPageZoom',
   title: 'FullPageZoom',
   type: 'document',
+  components: {preview: ComponentName('Full Page Zoom')},
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'subtitle',
+    },
+  },
   fields: [
     defineField({
       name: 'title',
