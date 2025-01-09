@@ -39,6 +39,7 @@ export const galleryLogo = defineType({
     defineField({
       name: 'gallery',
       type: 'array',
+      description: '4 images needed',
       of: [{
         type: 'object',
         preview:{
@@ -72,6 +73,7 @@ export const galleryLogo = defineType({
           }),         
         ],
       }],
+      validation: Rule => Rule.required().min(4).max(4),
     }),  
     // defineField({
     //   name: 'theme',
