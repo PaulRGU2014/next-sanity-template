@@ -65,12 +65,16 @@ function ArrowNext(props: { className?: string; style?: React.CSSProperties; onC
 }
 
 export default function SliderColors({ content }: TwoColumnSliderProps) {
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [animSlideIndex, setAnimSlideIndex] = useState(0);
-  const [finalSlideIndex, setFinalSlideIndex] = useState(0);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(-1);
+  const [animSlideIndex, setAnimSlideIndex] = useState(-1);
+  const [finalSlideIndex, setFinalSlideIndex] = useState(-1);
   const [screenWidth, setScreenWidth] = useState<number | undefined>(undefined);
   const sliderRef = useRef<Slider>(null);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setActiveSlideIndex(0);
+    }, 100);}, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') { setScreenWidth(window.outerWidth) }
@@ -113,9 +117,11 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
     // beforeChange: (current, next) => setActiveSlideIndex(next),
     afterChange: (current: number) => setActiveSlideIndex(current),
   };
+    
 
-  console.log('activeSlideIndex', activeSlideIndex);
-  console.log('animSlideIndex', animSlideIndex);
+
+  // console.log('activeSlideIndex', activeSlideIndex);
+  // console.log('animSlideIndex', animSlideIndex);
 
   return (
     <InViewAnim><div className={styles.component}>
@@ -142,7 +148,7 @@ export default function SliderColors({ content }: TwoColumnSliderProps) {
             <section className={`${styles.primary}
              ${animSlideIndex === activeSlideIndex ? styles.isAnim : ""}
              ${finalSlideIndex === activeSlideIndex ? styles.isActive : ""}`}>
-            {!!content.slides[finalSlideIndex].image?.asset._ref && <Image
+            {!!content.slides[finalSlideIndex]?.image?.asset._ref && <Image
               className={styles.image}
               src={content.slides[finalSlideIndex].image?.asset._ref}
               alt={content.slides[finalSlideIndex].image?.alt || 'default alt text'}
