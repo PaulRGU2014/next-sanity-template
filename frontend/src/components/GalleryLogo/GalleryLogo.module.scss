@@ -3,15 +3,23 @@
 .component {
   position: relative;
   height: 100vh;
+  background-color: $white;
+  &.dark {
+    background-color: $black;
+  }
 }
 .wrapper {
+  @include centered($max-width);
+  margin: {
+    top: 0;
+    bottom: 0;
+  }
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
+  // width: 100%;
   height: 100%;
-  max-width: $max-width;
-  margin: 0 auto;
+  // max-width: $max-width;
   position: relative;
   &::after {
     content: "";
@@ -58,21 +66,9 @@
           rgba(0, 0, 0, 0) 0%,
           rgba(0, 0, 0, 1) 100%
         ),
-        linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) 100%
-        ),
-        linear-gradient(
-          270deg,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) 100%
-        ),
-        linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) 100%
-        );
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%),
+        linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
       background-repeat: no-repeat;
       background-position: top, bottom, left, right;
       background-size:
@@ -129,6 +125,16 @@
   &_wrapper {
     position: relative;
     overflow: hidden;
+    &:nth-of-type(2n) {
+      .galleryImage_text {
+        padding-right: 17.5%;
+      }
+    }
+    &:nth-of-type(2n-1) {
+      .galleryImage_text {
+        padding-left: 17.5%;
+      }
+    }
     &:hover .galleryImage::after {
       opacity: 0.8;
     }
@@ -160,7 +166,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 20px 12.5%;
+    padding: 30px;
     background-color: rgba($color: $white, $alpha: 0.5);
     z-index: 1;
     transform: translateY(100%);
@@ -181,6 +187,9 @@
     &_text {
       background-color: rgba($color: $black, $alpha: 0.5);
       color: $white;
+      & > * {
+        color: $white;
+      }
     }
   }
 }

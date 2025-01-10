@@ -18,7 +18,7 @@ export const galleryLogo = defineType({
       type: 'text',
       rows: 3,
       readOnly: true,
-      initialValue: 'Component Information Description',
+      initialValue: 'This component is used to display a gallery of  4 images with a logo.',
     }),
     defineField({
       name: 'title',
