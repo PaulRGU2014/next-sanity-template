@@ -89,7 +89,7 @@ function MenuContent({
                     onClick={() => setSubMenuIndex(subIndex)}
                   >
                     <Link 
-                      href={subMenus1.url} 
+                      href={subMenus1.link.url} 
                       className={styles.subMenu_link}
                       onClick={(event) => handleMenuClick(event, index, subIndex, subMenus1.url, !!subMenus1.sub_menus_2)}
                     >
@@ -104,7 +104,7 @@ function MenuContent({
                             className={styles.subMenu}
                           >
                             <Link 
-                              href={subMenus2.url} 
+                              href={subMenus2.link.url} 
                               className={styles.subMenu_link}
                             >
                               {subMenus2.title}
