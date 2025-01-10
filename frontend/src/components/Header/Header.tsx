@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile/MenuMobile'
+import path from 'path';
 
 
 interface HeaderProps {
@@ -23,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ content }) => {
   const [initialLoad, setInitialLoad] = useState(true);
 
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const controlHeader = useCallback(() => {
     if (typeof window !== 'undefined') {
@@ -127,8 +128,8 @@ const Header: React.FC<HeaderProps> = ({ content }) => {
       setSubMenuIndex(-1);
     }
     else if (!hasSubMenus) {
-      if (pathname !== url) {
-        router.push(url);
+      if (pathname === url) {
+        window.location.href = url;
       }
     }
   }

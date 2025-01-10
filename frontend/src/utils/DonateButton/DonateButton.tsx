@@ -44,7 +44,7 @@ export default function DonateButton({ content }: DonateButtonProps) {
     };
   }, []);
 
-  console.log('DonateButton', content);
+  // console.log('DonateButton', content);
 
   return (
     <div

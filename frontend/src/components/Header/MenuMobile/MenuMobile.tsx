@@ -73,7 +73,7 @@ function MenuContent({
             onMouseLeave={() => setMainMenuIndex(-1)}
           >
             <Link
-              href={item.url}
+              href={item.link.url}
               onClick={(event) => handleMenuClick(event, index, -1, item.url, !!item.sub_menus_1)}
             >
               {item.title}{item.sub_menus_1 && item.sub_menus_1.length > 0 && <div className={`${styles.dropdown} ${mainMenuIndex === index ? styles.active : ''}`}><BsChevronCompactDown /></div>}
