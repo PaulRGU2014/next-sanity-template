@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile/MenuMobile'
 
@@ -20,6 +21,8 @@ const Header: React.FC<HeaderProps> = ({ content }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuOpening, setIsMenuOpening] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true);
+
+  const router = useRouter();
 
   const controlHeader = useCallback(() => {
     if (typeof window !== 'undefined') {
@@ -123,7 +126,9 @@ const Header: React.FC<HeaderProps> = ({ content }) => {
       setSubMenuIndex(-1);
     }
     else if (!hasSubMenus) {
-      window.location.href = url;
+      if (router.pathname !== url) {
+        router.push(url);
+      }
     }
   }
 
