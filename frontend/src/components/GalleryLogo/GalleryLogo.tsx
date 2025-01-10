@@ -20,9 +20,8 @@ export default function GalleryLogo({content}: GalleryLogoProps) {
           objectPosition="center center"
         />}
         {content?.gallery?.map((item: any, index: number) => (
-          <div className={styles.galleryImage_wrapper}>
+          <div className={styles.galleryImage_wrapper} key={index} >
             {!!item.image.asset._ref && <Image
-              key={index} 
               className={styles.galleryImage}
               src={item.image.asset._ref}
               alt={item.image.alt}
