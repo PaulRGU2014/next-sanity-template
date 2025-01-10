@@ -15,6 +15,7 @@
     @else if $anim == fromBottom { transform: translate3d(0, $amount, 0) } 
     @else if $anim == popUp {transform: scale(1.2)}
     @else if $anim == popIn {transform: scale(0.8)}
+    @else if $anim == fadeIn {opacity: 0}
 
     #{$trigger} &{
         opacity: 1;

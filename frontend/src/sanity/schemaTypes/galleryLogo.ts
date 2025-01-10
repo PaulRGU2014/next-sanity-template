@@ -61,6 +61,14 @@ export const galleryLogo = defineType({
             type: 'string',
           }),
           defineField({
+            name: 'description',
+            type: 'text',
+          }),
+          defineField({
+            name: 'link',
+            type: 'string',
+          }),
+          defineField({
             name: 'image',
             title: 'Image',
             type: 'image',
@@ -82,15 +90,15 @@ export const galleryLogo = defineType({
       }],
       validation: Rule => Rule.required().min(4).max(4),
     }),  
-    // defineField({
-    //   name: 'theme',
-    //   type: 'string',
-    //   description: 'Description here',
-    //   options: {
-    //     list: ['light', 'dark'],
-    //     layout: 'radio',
-    //   },
-    //   initialValue: 'light',
-    // }),
+    defineField({
+      name: 'theme',
+      type: 'string',
+      description: 'Description here',
+      options: {
+        list: ['light', 'dark'],
+        layout: 'radio',
+      },
+      initialValue: 'light',
+    }),
   ],
 })
