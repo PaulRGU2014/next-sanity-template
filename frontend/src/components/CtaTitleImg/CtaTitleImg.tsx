@@ -16,7 +16,7 @@ export default function CtaTitleImg({ content }: CtaTitleImgProps) {
     const iframe = iframeRef.current;
     if (iframe) {
       const handleLoad = () => {
-        iframe.style.height = iframe.contentWindow?.document.body.scrollHeight + 'px';
+        iframe.style.height = iframe.contentWindow?.document.body.scrollHeight + 20 + 'px';
       };
       iframe.addEventListener('load', handleLoad);
       return () => {
@@ -44,7 +44,9 @@ export default function CtaTitleImg({ content }: CtaTitleImgProps) {
             title="Embedded Content"
             className={styles.cta}
             sandbox="allow-scripts allow-same-origin"
-            scrolling="no"
+            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture, payment'
+            loading='eager'
+            scrolling="auto"
           />}
         </div>
       </div>
