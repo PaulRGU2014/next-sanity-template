@@ -4,6 +4,7 @@
   position: relative;
   min-height: 350px;
   margin: 0;
+  @include scroll-animation($anim: fromTop, $delay:150ms, $sequence: 60ms, $speed: 1000ms );
 }
 
 .image {
@@ -34,7 +35,6 @@
     gap: 30px;
     padding: 60px 0;
   }
-  @include scroll-animation($anim: fromTop, $delay:300ms, $sequence: 60ms, $speed: 1000ms );
   @include responsive (lg) {
     flex-direction: column;
     gap: 25px;
@@ -47,6 +47,8 @@
   position: relative;
   z-index: 2;
   color: $white;
+  @include scroll-animation($anim: fromTop, $delay:250ms, $speed: 1000ms );
+
   @include responsive (lg) {
     width: 100%;
   }
@@ -57,7 +59,7 @@
   z-index: 3;
   overflow: hidden;
   border: none;
-  
+  @include scroll-animation($anim: fromTop, $delay:500ms, $speed: 1000ms );
   @include responsive (lg) {
     width: fit-content;
     align-self: center;
