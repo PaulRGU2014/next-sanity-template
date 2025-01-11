@@ -16,7 +16,9 @@ export default function CtaTitleImg({ content }: CtaTitleImgProps) {
     const iframe = iframeRef.current;
     if (iframe) {
       const handleLoad = () => {
-        iframe.style.height = iframe.contentWindow?.document.body.scrollHeight + 20 + 'px';
+        if (iframe.contentWindow && iframe.contentWindow.document.body) {
+          iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 20 + 'px';
+        }
       };
       iframe.addEventListener('load', handleLoad);
       return () => {
