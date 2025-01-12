@@ -1,6 +1,7 @@
 "use client"
 
 //importHere
+	import TapMapBranches from './TapMapBranches/TapMapBranches';
 	import GalleryLogo from './GalleryLogo/GalleryLogo';
 	import LogoCarousel from './LogoCarousel/LogoCarousel';
 	import TextImageButton from './TextImageButton/TextImageButton';
@@ -24,6 +25,7 @@
 
 const hardcodedComponents = {
 //hardCodedHere
+	tapMapBranches: TapMapBranches,
 	checkout: Checkout,
   shopify: Shopify,
   contactForm: ContactForm,

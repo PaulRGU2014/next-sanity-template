@@ -8,7 +8,7 @@ export const hardcodedBlocks = defineType({
   components: {preview: ComponentName('Hardcoded Blocks')},
   preview: {
     select: {
-      title: 'title',
+      title: 'block_title',
     },
   },      
   fields: [
@@ -21,6 +21,8 @@ export const hardcodedBlocks = defineType({
       initialValue: 'Hardcoded blocks are components that are not created in the CMS, but are hardcoded into the frontend. This document type is used to render these components.',
     }),
     defineField({
+      title: 'Block Name',
+      description: 'The name of the hardcoded block will be provided by the frontend team.',
       name: 'block_title',
       type: 'string',
     }),

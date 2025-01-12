@@ -30,9 +30,9 @@ export const galleryLogo = defineType({
       title: 'Logo',
       type: 'image',
       options: {
-        accept: 'image/png, image/svg+xml',
+        accept: 'image/webp, image/svg+xml',
       },
-      description: 'Accept only .png and .svg format image.',
+      description: 'Accept only .webp and .svg format image.',
       fields: [
         {
           name: 'alt',
