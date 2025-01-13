@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     domains: ["cdn.shopify.com"]
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'], // Disable deprecation warnings, come back when we update the system
   }
