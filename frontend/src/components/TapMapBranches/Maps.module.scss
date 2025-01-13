@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  @include responsive (md) {
+      flex-direction: column;
+  }
 }
 
 .map {
@@ -19,6 +22,11 @@
       height: 100%;
       object-fit: contain;
   }
+  @include scroll-animation($anim: fromTop, $delay:300ms, $sequence: 60ms, $speed: 1000ms );
+  @include responsive (md) {
+      width: 100%;
+      height: 100%;
+  }
 }
 
 .pin{
@@ -26,12 +34,26 @@
   z-index: 5;
   width: 50px;
   height: 50px;
-
   cursor: pointer;
   transform-origin: center;
-  transition: transform 0.5s $ease-out-quint 0.1s;
+  transform: translateY(-30px);
+  opacity: 0;
+  [data-in-view=true] &{
+      transform: scale(0.8) translateY(0);
+      opacity: 1;
+      transition: all 0.5s $ease-out-quint;
+  }
+  [data-in-view=false] & {
+        transition-delay: 0 !important;
+  }
   &:hover {
-      transform: scaleX(-1);
+      transform: scaleX(-1) scale(1.2);
+      z-index: 99;
+  }
+  &.isActive {
+      transform: scaleX(-1) scale(1.2);
+      z-index: 99;
+      transition-delay: 0s !important;
   }
   svg {
       width: 100%;
@@ -158,5 +180,29 @@
       &_tx {
           top: calc(76% - 12.5px);
       }
+  }
+}
+
+.list {
+  @include scroll-animation($anim: fromLeft, $delay:250ms, $sequence: 120ms, $speed: 1000ms );
+  &_each {
+    text-transform: uppercase;
+    font-weight: bold;
+    list-style: none;
+    padding: 5px 0;
+    cursor: pointer;
+    &.isActive {
+        color: $yellow-500;
+        transform: all 0.5s $ease-out-quint 0;
+    }
+  }
+}
+
+@keyframes dropPin {
+  0% {
+      transform: translateY(20px);
+  }
+  100% {
+      transform: translateY(0);
   }
 }
