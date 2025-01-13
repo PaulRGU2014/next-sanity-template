@@ -1,7 +1,7 @@
 "use client"
 
 import styles from './TapMapBranches.module.scss';
-import USAMap from './USAMap';
+import Maps from './Maps';
 import { useState, useEffect, useRef} from 'react';
 
 interface TapMapBranchesProps {
@@ -17,7 +17,7 @@ export default function TapMapBranches({content}: TapMapBranchesProps) {
           <div className={styles.tab}>USA</div>
           <div className={styles.tab}>Uganda</div>
         </div>
-        <USAMap />
+        <Maps region={'USA'} />
       </div>
     </div>
   )
