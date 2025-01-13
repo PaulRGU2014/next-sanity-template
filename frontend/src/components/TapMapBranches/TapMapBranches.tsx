@@ -5,7 +5,7 @@ import Maps from './Maps';
 import { useState, useEffect, useRef} from 'react';
 
 interface TapMapBranchesProps {
-  content: any; // Replace 'any' with the appropriate type
+  content?: any; // Replace 'any' with the appropriate type
 }
 
 
