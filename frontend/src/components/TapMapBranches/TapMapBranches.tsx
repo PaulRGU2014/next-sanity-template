@@ -10,14 +10,17 @@ interface TapMapBranchesProps {
 
 
 export default function TapMapBranches({content}: TapMapBranchesProps) {
+  const [activeTab, setActiveTab] = useState('USA');
+  console.log(activeTab)
   return(
     <div className={styles.component}>
       <div className={styles.wrapper}>
         <div className={styles.tabs}>
-          <div className={styles.tab}>USA</div>
-          <div className={styles.tab}>Uganda</div>
+          <div className={`${styles.tab} ${activeTab==='USA' ? styles.isActive : ""}`} onClick={()=>setActiveTab('USA')}>USA</div>
+          <div className={`${styles.tab} ${activeTab==='Uganda' ? styles.isActive : ""}`} onClick={()=>setActiveTab('Uganda')}>Uganda</div>
         </div>
-        <Maps region={'USA'} />
+        {activeTab === 'USA' && <Maps region={'USA'} />}
+        {activeTab === 'Uganda' && <Maps region={'Uganda'} />}
       </div>
     </div>
   )

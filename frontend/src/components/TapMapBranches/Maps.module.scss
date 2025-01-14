@@ -1,12 +1,11 @@
-@use '../../scss/helpers/import' as *;
+@use "../../scss/helpers/import" as *;
 
-
-.component{
+.component {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  @include responsive (md) {
-      flex-direction: column;
+  align-items: flex-start;
+  @include responsive(md) {
+    flex-direction: column;
   }
 }
 
@@ -17,19 +16,24 @@
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
-  img{
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
-  @include scroll-animation($anim: fromTop, $delay:300ms, $sequence: 60ms, $speed: 1000ms );
-  @include responsive (md) {
-      width: 100%;
-      height: 100%;
+  @include scroll-animation(
+    $anim: fromTop,
+    $delay: 300ms,
+    $sequence: 60ms,
+    $speed: 1000ms
+  );
+  @include responsive(md) {
+    width: 100%;
+    height: 100%;
   }
 }
 
-.pin{
+.pin {
   position: absolute;
   z-index: 5;
   width: 50px;
@@ -38,171 +42,194 @@
   transform-origin: center;
   transform: translateY(-30px);
   opacity: 0;
-  [data-in-view=true] &{
-      transform: scale(0.8) translateY(0);
-      opacity: 1;
-      transition: all 0.5s $ease-out-quint;
+  [data-in-view="true"] & {
+    transform: scale(0.8) translateY(0);
+    opacity: 1;
+    transition: all 0.5s $ease-out-quint;
   }
-  [data-in-view=false] & {
-        transition-delay: 0 !important;
+  [data-in-view="false"] & {
+    transition-delay: 0 !important;
   }
   &:hover {
-      transform: scaleX(-1) scale(1.2);
-      z-index: 99;
+    transform: scaleX(-1) scale(1.2);
+    z-index: 99;
   }
   &.isActive {
-      transform: scaleX(-1) scale(1.2);
-      z-index: 99;
-      transition-delay: 0s !important;
+    transform: scaleX(-1) scale(1.2);
+    z-index: 99;
+    transition-delay: 0s !important;
   }
   svg {
-      width: 100%;
-      height: 100%;
-      fill: $white;
+    width: 100%;
+    height: 100%;
+    fill: $white;
   }
   &_az {
-      @extend .pin;
-      top: calc(59% - 25px);
-      left: calc(21% - 25px);
+    @extend .pin;
+    top: calc(59% - 25px);
+    left: calc(21% - 25px);
   }
   &_desMoines {
-      @extend .pin;
-      top: calc(32% - 25px);
-      left: calc(54% - 25px);
+    @extend .pin;
+    top: calc(32% - 25px);
+    left: calc(54% - 25px);
   }
   &_lincoln {
-      @extend .pin;
-      top: calc(34% - 25px);
-      left: calc(43% - 25px);
+    @extend .pin;
+    top: calc(34% - 25px);
+    left: calc(43% - 25px);
   }
   &_nc {
-      @extend .pin;
-      top: calc(50% - 25px);
-      left: calc(82% - 25px);
+    @extend .pin;
+    top: calc(50% - 25px);
+    left: calc(82% - 25px);
   }
   &_nh {
-      @extend .pin;
-      top: calc(19% - 25px);
-      left: calc(90% - 25px);
+    @extend .pin;
+    top: calc(19% - 25px);
+    left: calc(90% - 25px);
   }
   &_omaha {
-      @extend .pin;
-      top: calc(33% - 25px);
-      left: calc(49% - 25px);
+    @extend .pin;
+    top: calc(33% - 25px);
+    left: calc(49% - 25px);
   }
   &_stc {
-      @extend .pin;
-      top: calc(19% - 25px);
-      left: calc(52% - 25px);
+    @extend .pin;
+    top: calc(19% - 25px);
+    left: calc(52% - 25px);
   }
   &_tx {
-      @extend .pin;
-      top: calc(76% - 25px);
-      left: calc(48% - 25px);
+    @extend .pin;
+    top: calc(76% - 25px);
+    left: calc(48% - 25px);
   }
-  @include responsive (md) {
-      height: 40px;
-      &_az {
-          top: calc(59% - 20px);
-      }
-      &_desMoines {
-          top: calc(32% - 20px);
-      }
-      &_lincoln {
-          top: calc(34% - 20px);
-      }
-      &_nc {
-          top: calc(50% - 20px);
-      }
-      &_nh {
-          top: calc(19% - 20px);
-      }
-      &_omaha {
-          top: calc(33% - 20px);
-      }
-      &_stc {
-          top: calc(19% - 20px);
-      }
-      &_tx {
-          top: calc(76% - 20px);
-      }
+  &_kampala {
+    @extend .pin;
+    top: calc(60% - 25px);
+    left: calc(54% - 25px);
   }
-  @include responsive (sm) {
-      height: 30px;
-      &_az {
-          top: calc(59% - 15px);
-      }
-      &_desMoines {
-          top: calc(32% - 15px);
-      }
-      &_lincoln {
-          top: calc(34% - 15px);
-      }
-      &_nc {
-          top: calc(50% - 15px);
-      }
-      &_nh {
-          top: calc(19% - 15px);
-      }
-      &_omaha {
-          top: calc(33% - 15px);
-      }
-      &_stc {
-          top: calc(19% - 15px);
-      }
-      &_tx {
-          top: calc(76% - 15px);
-      }
+  @include responsive(md) {
+    height: 40px;
+    &_az {
+      top: calc(59% - 20px);
+    }
+    &_desMoines {
+      top: calc(32% - 20px);
+    }
+    &_lincoln {
+      top: calc(34% - 20px);
+    }
+    &_nc {
+      top: calc(50% - 20px);
+    }
+    &_nh {
+      top: calc(19% - 20px);
+    }
+    &_omaha {
+      top: calc(33% - 20px);
+    }
+    &_stc {
+      top: calc(19% - 20px);
+    }
+    &_tx {
+      top: calc(76% - 20px);
+    }
+    &_kampala {
+      top: calc(60% - 20px);
+    }
   }
-  @include responsive (xs) {
-      height: 20px;
-      &_az {
-          top: calc(59% - 12.5px);
-      }
-      &_desMoines {
-          top: calc(32% - 12.5px);
-      }
-      &_lincoln {
-          top: calc(34% - 12.5px);
-      }
-      &_nc {
-          top: calc(50% - 12.5px);
-      }
-      &_nh {
-          top: calc(19% - 12.5px);
-      }
-      &_omaha {
-          top: calc(33% - 12.5px);
-      }
-      &_stc {
-          top: calc(19% - 12.5px);
-      }
-      &_tx {
-          top: calc(76% - 12.5px);
-      }
+  @include responsive(sm) {
+    height: 30px;
+    &_az {
+      top: calc(59% - 15px);
+    }
+    &_desMoines {
+      top: calc(32% - 15px);
+    }
+    &_lincoln {
+      top: calc(34% - 15px);
+    }
+    &_nc {
+      top: calc(50% - 15px);
+    }
+    &_nh {
+      top: calc(19% - 15px);
+    }
+    &_omaha {
+      top: calc(33% - 15px);
+    }
+    &_stc {
+      top: calc(19% - 15px);
+    }
+    &_tx {
+      top: calc(76% - 15px);
+    }
+    &_kampala {
+      top: calc(60% - 15px);
+    }
+  }
+  @include responsive(xs) {
+    height: 20px;
+    &_az {
+      top: calc(59% - 12.5px);
+    }
+    &_desMoines {
+      top: calc(32% - 12.5px);
+    }
+    &_lincoln {
+      top: calc(34% - 12.5px);
+    }
+    &_nc {
+      top: calc(50% - 12.5px);
+    }
+    &_nh {
+      top: calc(19% - 12.5px);
+    }
+    &_omaha {
+      top: calc(33% - 12.5px);
+    }
+    &_stc {
+      top: calc(19% - 12.5px);
+    }
+    &_tx {
+      top: calc(76% - 12.5px);
+    }
+    &_kampala {
+      top: calc(60% - 12.5px);
+    }
   }
 }
 
 .list {
-  @include scroll-animation($anim: fromLeft, $delay:250ms, $sequence: 120ms, $speed: 1000ms );
+    width: 40%;
+  @include scroll-animation(
+    $anim: fromLeft,
+    $delay: 250ms,
+    $sequence: 120ms,
+    $speed: 1000ms
+  );
   &_each {
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-weight: bold;
     list-style: none;
     padding: 5px 0;
     cursor: pointer;
     &.isActive {
-        color: $yellow-500;
-        transform: all 0.5s $ease-out-quint 0;
+      color: $yellow-500;
+      transform: all 0.5s $ease-out-quint 0;
     }
   }
+  @include responsive(md) {
+    width: 100%;
+  } 
 }
 
 @keyframes dropPin {
   0% {
-      transform: translateY(20px);
+    transform: translateY(20px);
   }
   100% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
 }

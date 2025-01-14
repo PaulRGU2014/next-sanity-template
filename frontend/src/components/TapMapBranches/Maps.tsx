@@ -4,7 +4,8 @@ import styles from './Maps.module.scss';
 import React, { useState, useEffect, useRef } from 'react';
 import InViewAnim from '../../utils/InViewAnim/InViewAnim';
 import Image from 'next/image';
-import Map from './assets/map_usa.svg';
+import USMap from './assets/map_usa.svg';
+import UgandaMap from './assets/map_uganda.svg';
 
 
 interface TapMapBranchesProps {
@@ -24,15 +25,20 @@ function Pin({ className, transitionDelay }: { className: string, transitionDela
 
 export default function Maps({ region }: TapMapBranchesProps) {
   const [activeSpot, setActiveSpot] = useState('')
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  console.log(activeSpot)
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoaded(true)
+    }, 2000)
+  }, [ ])
 
   if (region === 'USA') {
     return (
       <InViewAnim><div className={styles.component}>
         <div className={styles.map}>
           <Image
-            src={Map}
+            src={USMap}
             alt='image'
             style={{
               objectFit: 'contain',
@@ -40,14 +46,14 @@ export default function Maps({ region }: TapMapBranchesProps) {
             }}
             sizes="100%"
           />
-          <Pin className={`${styles.pin_az} ${activeSpot === 'az' ? styles.isActive : ''}`} transitionDelay={500} />
-          <Pin className={`${styles.pin_lincoln} ${activeSpot === 'lincoln' ? styles.isActive : ''}`}  transitionDelay={550}/>
-          <Pin className={`${styles.pin_omaha} ${activeSpot === 'omaha' ? styles.isActive : ''}`} transitionDelay={600} />
-          <Pin className={`${styles.pin_stc} ${activeSpot === 'stc' ? styles.isActive : ''}`} transitionDelay={650}/>
-          <Pin className={`${styles.pin_desMoines} ${activeSpot === 'desMoines' ? styles.isActive : ''}`} transitionDelay={700}/>
-          <Pin className={`${styles.pin_tx} ${activeSpot === 'tx' ? styles.isActive : ''}`} transitionDelay={750}/>
-          <Pin className={`${styles.pin_nc} ${activeSpot === 'nc' ? styles.isActive : ''}`} transitionDelay={800}/>
-          <Pin className={`${styles.pin_nh} ${activeSpot === 'nh' ? styles.isActive : ''}`} transitionDelay={850}/>
+          <Pin className={`${styles.pin_az} ${activeSpot === 'az' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 500 : 0} />
+          <Pin className={`${styles.pin_lincoln} ${activeSpot === 'lincoln' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 550 : 0} />
+          <Pin className={`${styles.pin_omaha} ${activeSpot === 'omaha' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 600 : 0} />
+          <Pin className={`${styles.pin_stc} ${activeSpot === 'stc' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 650 : 0} />
+          <Pin className={`${styles.pin_desMoines} ${activeSpot === 'desMoines' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 700 : 0} />
+          <Pin className={`${styles.pin_tx} ${activeSpot === 'tx' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 750 : 0} />
+          <Pin className={`${styles.pin_nc} ${activeSpot === 'nc' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 800 : 0} />
+          <Pin className={`${styles.pin_nh} ${activeSpot === 'nh' ? styles.isActive : ''}`} transitionDelay={isLoaded===false ? 850 : 0} />
         </div>
         <ul className={styles.list}>
           <li className={`${styles.list_each} ${activeSpot === 'omaha' ? styles.isActive : ''}`}
@@ -101,6 +107,30 @@ export default function Maps({ region }: TapMapBranchesProps) {
         </ul>
       </div></InViewAnim>
     )
+  } else if (region === 'Uganda') {
+    return (
+      <InViewAnim><div className={styles.component}>
+        <div className={styles.map}>
+          <Image
+            src={UgandaMap}
+            alt='image'
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'center'
+            }}
+            sizes="100%"
+          />
+          <Pin className={`${styles.pin_kampala} ${activeSpot === 'kampala' ? styles.isActive : ''}`} transitionDelay={500} />
+        </div>
+        <ul className={styles.list}>
+          <li className={`${styles.list_each} ${activeSpot === 'kampala' ? styles.isActive : ''}`}
+            onMouseEnter={() => setActiveSpot('kampala')}
+            onMouseLeave={() => setActiveSpot('')}
+          >
+            Kampala
+          </li>
+        </ul>
+      </div></InViewAnim>
+    )
   }
-
 }
