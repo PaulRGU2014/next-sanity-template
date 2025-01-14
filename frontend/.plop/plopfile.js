@@ -23,21 +23,9 @@ module.exports = (plop) => {
         },
         {
           type: 'append',
-          path: '../src/components/ComponentLoader.tsx',
-          pattern: /\/\/importHere/,
-          template: "\timport {{pascalCase name}} from './{{pascalCase name}}/{{pascalCase name}}';",
-        },
-        {
-          type: 'append',
           path: '../src/sanity/schemaTypes/index.ts',
           pattern: /\/\/importHere/,
           template: "\timport { {{camelCase name}} } from './{{camelCase name}}';",
-        },
-        {
-          type: 'append',
-          path: '../src/components/ComponentLoader.tsx',
-          pattern: /\/\/associateHere/,
-          template: "\t{{camelCase name}}: {{name}},",
         },
         {
           type: 'append',
@@ -50,6 +38,18 @@ module.exports = (plop) => {
           path: '../src/sanity/schemaTypes/pages.ts',
           pattern: /\/\/associateHere/,
           template: "\t{ type : '{{camelCase name}}' },",              
+        },
+        {
+          type: 'append',
+          path: '../src/components/ComponentLoader.tsx',
+          pattern: /\/\/associateHere/,
+          template: "\t{{camelCase name}}: {{name}},",
+        },
+        {
+          type: 'append',
+          path: '../src/components/ComponentLoader.tsx',
+          pattern: /\/\/importHere/,
+          template: "\timport {{pascalCase name}} from './{{pascalCase name}}/{{pascalCase name}}';",
         },
         {
           type: 'add',

@@ -11,6 +11,16 @@ export const tapMapBranches = defineType({
       title: 'title',
     },
   },
+  groups: [
+    {
+      name: 'usa',
+      title: 'USA'
+    },
+    {
+      name: 'uganda',
+      title: 'Uganda'
+    }
+  ],
   fields: [
     defineField({
       name: 'info',
@@ -23,6 +33,64 @@ export const tapMapBranches = defineType({
     defineField({
       name: 'title',
       type: 'string',
+    }),
+    defineField({
+      name: 'branches_usa',
+      title: 'USA Branches',
+      type: 'array',
+      of: [{
+        name:'branch',
+        type:'object',
+        fields: [
+          {
+            name: 'branch_name',
+            title: 'Branch Name',
+            type: 'string'
+          },
+          {
+            name: 'branch_id',
+            title: 'Branch ID',
+            description: 'The value in this field needs to be matched to the ID provided by the frontend team',
+            type: 'string'
+          },
+          {
+            name: 'body',
+            title: 'Content',
+            type: 'text',
+            rows: 3
+          }
+        ]
+      }],
+      group:['usa']
+    }),
+    defineField({
+      name: 'branches_uganda',
+      title: 'Uganda Branches',
+      type: 'array',
+      of: [{
+        name:'branch',
+        type:'object',
+        fields: [
+          {
+            name: 'branch_name',
+            title: 'Branch Name',
+            type: 'string'
+          },
+          {
+            name: 'branch_id',
+            title: 'Branch ID',
+            description: 'The value in this field needs to be matched to the ID provided by the frontend team',
+            type: 'string'
+          },
+          {
+            name: 'body',
+            title: 'Content',
+            type: 'text',
+            rows: 3
+          }
+        ]
+      }],
+      group:['uganda']
     }),
     defineField({
       name: 'theme',
