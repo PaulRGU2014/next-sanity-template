@@ -28,7 +28,8 @@ export const tapMapBranches = defineType({
       type: 'text',
       rows: 3,
       readOnly: true,
-      initialValue: 'Component Information Description',
+      initialValue: 'This compoenent is partly hardcoded and partly dynamic. The title and content are dynamic and the maps are hardcoded. If you need to add a new branch, you need to contact frontend team.',
+      group:['usa', 'uganda']
     }),
     defineField({
       name: 'title',

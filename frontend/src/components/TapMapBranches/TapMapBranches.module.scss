@@ -7,8 +7,14 @@
   @include centered($max-width);
   & {
     margin: {
-      top: $standard-vertical-spacing;
+      top: -30px;
       bottom: $standard-vertical-spacing;
+    }
+  }
+  @include responsive (md) {
+    margin: {
+      top: 0;
+      bottom: calc($standard-vertical-spacing / 2);
     }
   }
 }
