@@ -50,10 +50,7 @@
   [data-in-view="false"] & {
     transition-delay: 0 !important;
   }
-  &:hover {
-    transform: scaleX(-1) scale(1.2);
-    z-index: 99;
-  }
+  
   &.isActive {
     transform: scaleX(-1) scale(1.2);
     z-index: 99;
