@@ -21,7 +21,6 @@ export default function HeroGallery({content}: HeroGalleryProps) {
             alt={image?.alt}
             objectFit="cover"
             objectPosition="center"
-            priority={true}
           />
         ))}
         </div>

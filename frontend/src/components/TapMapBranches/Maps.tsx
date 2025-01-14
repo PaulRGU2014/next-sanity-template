@@ -43,7 +43,7 @@ function renderPins(pins: Pin[], activeSpot: string, isLoaded: boolean, setActiv
     <Pin
       key={spot}
       className={`${className} ${activeSpot === spot ? styles.isActive : ''}`}
-      transitionDelay={isLoaded === false ? delay : 0}
+      transitionDelay={isLoaded === false ? delay : 150}
       onMouseEnter={() => setActiveSpot(spot)}
       onMouseLeave={() => setActiveSpot('')}
     />
