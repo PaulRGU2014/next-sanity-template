@@ -28,6 +28,7 @@ export const pages = defineType({
           type: 'reference',
           to: [
           //associateHere
+	{ type : 'tapMapBranches' },
 	{ type : 'galleryLogo' },
 	{ type : 'logoCarousel' },
 	{ type : 'textImageButton' },

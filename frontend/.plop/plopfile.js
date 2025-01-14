@@ -18,16 +18,6 @@ module.exports = (plop) => {
       const actions = [
         {
           type: 'add',
-          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
-          templateFile: './componentJs.hbs',
-        },
-        {
-          type: 'add',
-          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.module.scss',
-          templateFile: './componentScss.hbs',
-        },
-        {
-          type: 'add',
           path: '../src/sanity/schemaTypes/{{camelCase name}}.ts',
           templateFile: './sanityfield.hbs',
         },
@@ -60,6 +50,16 @@ module.exports = (plop) => {
           path: '../src/sanity/schemaTypes/pages.ts',
           pattern: /\/\/associateHere/,
           template: "\t{ type : '{{camelCase name}}' },",              
+        },
+        {
+          type: 'add',
+          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
+          templateFile: './componentJs.hbs',
+        },
+        {
+          type: 'add',
+          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.module.scss',
+          templateFile: './componentScss.hbs',
         },
       ];
 

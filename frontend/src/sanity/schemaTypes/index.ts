@@ -1,5 +1,6 @@
 import { type SchemaTypeDefinition } from "sanity";
 //importHere
+	import { tapMapBranches } from './tapMapBranches';
 	import { galleryLogo } from './galleryLogo';
 	import { logoCarousel } from './logoCarousel';
 	import { textImageButton } from './textImageButton';
@@ -24,6 +25,7 @@ import { gridLinksCarousel } from "./gridLinksCarousel";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
   //associateHere
+tapMapBranches,
 galleryLogo,
 logoCarousel,
 textImageButton,

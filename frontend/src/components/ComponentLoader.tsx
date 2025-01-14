@@ -25,7 +25,6 @@
 
 const hardcodedComponents = {
 //hardCodedHere
-	tapMapBranches: TapMapBranches,
 	checkout: Checkout,
   shopify: Shopify,
   contactForm: ContactForm,
@@ -41,6 +40,7 @@ function HardcodedComponent ({ block_title, ...props }: { block_title: keyof typ
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
 //associateHere
+	tapMapBranches: TapMapBranches,
 	galleryLogo: GalleryLogo,
 	logoCarousel: LogoCarousel,
 	textImageButton: TextImageButton,
