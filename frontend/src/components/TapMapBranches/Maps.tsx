@@ -1,15 +1,17 @@
 "use client"
 
-import styles from './Maps.module.scss';
 import React, { useState, useEffect, useRef } from 'react';
+import styles from './Maps.module.scss';
 import InViewAnim from '../../utils/InViewAnim/InViewAnim';
 import Image from 'next/image';
 import USMap from './assets/map_usa.svg';
 import UgandaMap from './assets/map_uganda.svg';
+import Accordion from '@/utils/Accordion/Accordion';
+import AccordionItem from '@/utils/Accordion/AccordionItem';
 
 interface TapMapBranchesProps {
   region: string;
-  content: { branch_id: string, branch_name: string }[];
+  content: { branch_id: string, branch_name: string, body: string }[];
 }
 
 interface PinProps {
@@ -48,16 +50,28 @@ function renderPins(pins: Pin[], activeSpot: string, isLoaded: boolean, setActiv
   ));
 }
 
-function renderList(content: { branch_id: string, branch_name: string }[], activeSpot: string, setActiveSpot: (spot: string) => void) {
+function renderList(content: { branch_id: string, branch_name: string, body: string }[], activeSpot: string, setActiveSpot: (spot: string) => void) {
   return content.map((branch, index) => (
-    <li
-      key={index}
-      className={`${styles.list_each} ${activeSpot === branch.branch_id ? styles.isActive : ''}`}
-      onMouseEnter={() => setActiveSpot(branch.branch_id)}
-      onMouseLeave={() => setActiveSpot('')}
-    >
-      {branch.branch_name}
-    </li>
+    <Accordion key={index}>
+      <AccordionItem
+        className={styles.accordionItem}
+        index={index}
+        title={
+          <li
+            key={index}
+            className={`${styles.list_each} ${activeSpot === branch.branch_id ? styles.isActive : ''}`}
+            onMouseEnter={() => setActiveSpot(branch.branch_id)}
+            onMouseLeave={() => setActiveSpot('')}
+          >
+            {branch.branch_name}
+          </li>
+        }
+        content={branch.body}
+        expandedIndex={0}
+        isToggle={true}
+        toggleAccordion={() => { }}
+      />
+    </Accordion>
   ));
 }
 

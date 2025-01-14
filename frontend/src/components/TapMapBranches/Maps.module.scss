@@ -208,18 +208,24 @@
   );
   &_each {
     // text-transform: uppercase;
+    @extend %h6;
+    margin: 0;
     font-weight: bold;
     list-style: none;
-    padding: 5px 0;
+    padding: 0 0 5px 0;
     cursor: pointer;
     &.isActive {
       color: $yellow-500;
-      transform: all 0.5s $ease-out-quint 0;
+      transition: all 0.5s $ease-out-quint 0;
     }
   }
   @include responsive(md) {
     width: 100%;
   } 
+}
+
+.accordionItem {
+  margin-bottom: 10px;
 }
 
 @keyframes dropPin {
