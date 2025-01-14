@@ -1,58 +1,64 @@
-@use '../../scss/helpers/import' as *;
+@use "../../scss/helpers/import" as *;
 
-.component{
+.component {
 
 }
-.wrapper{
-    @include centered($max-width);
-    & {
-        margin: {
-            top: $standard-vertical-spacing;
-            bottom: $standard-vertical-spacing;
-        };
+.wrapper {
+  @include centered($max-width);
+  & {
+    margin: {
+      top: $standard-vertical-spacing;
+      bottom: $standard-vertical-spacing;
     }
+  }
 }
 
 .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    margin-bottom: 30px
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 30px;
 }
 
 .tab {
-    @extend %h4;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
+  @extend %h4;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  @include scroll-animation(
+    $anim: fromTop,
+    $delay: 250ms,
+    $sequence: 120ms,
+    $speed: 500ms
+  );
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    top: calc(100% - 3px);
+    background-color: $yellow-500;
+    position: absolute;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.5s $ease-out-quint;
+  }
+  &.isActive {
+    color: $yellow-500;
     &::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 5px;
-        top: calc(100% - 3px);
-        background-color: $yellow-500;
-        position: absolute;
-        transform: translateY(10px);
-        opacity: 0;
-        transition: all 0.5s $ease-out-quint;
+      opacity: 1;
+      transform: translateY(0);
     }
-    &.isActive {
-        color: $yellow-500;
-        &::after {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  }
+  &:hover {
+    color: $yellow-500;
+    &::after {
+      opacity: 1;
+      transform: translateY(0);
     }
-    &:hover {
-        color: $yellow-500;
-        &::after {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+  }
 }

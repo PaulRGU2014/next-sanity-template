@@ -28,7 +28,6 @@ export const pages = defineType({
           type: 'reference',
           to: [
           //associateHere
-	{ type : 'tapMapBranches' },
 	{ type : 'galleryLogo' },
 	{ type : 'logoCarousel' },
 	{ type : 'textImageButton' },
@@ -44,6 +43,7 @@ export const pages = defineType({
 	{ type : 'richTextComp' },
 	{ type : 'textTwoImages' },
 	{ type : 'fullPageHero' },
+  { type : 'tapMapBranches' },
             {type: 'footer'},
             {type: 'hero'},
             {type: 'hardcodedBlocks'},

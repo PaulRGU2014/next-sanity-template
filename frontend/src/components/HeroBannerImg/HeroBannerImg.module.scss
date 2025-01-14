@@ -5,6 +5,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  @include scroll-animation(
+    $anim: fromTop,
+    $delay: 250ms,
+    $speed: 1000ms
+  );
 }
 
 .overlay{

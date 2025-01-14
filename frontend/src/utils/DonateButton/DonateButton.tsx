@@ -12,13 +12,17 @@ interface DonateButtonProps {
 export default function DonateButton({ content }: DonateButtonProps) {
   const buttonRef = useRef<HTMLDivElement>(null);
   const [buttonWidth, setButtonWidth] = useState(0);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (buttonRef.current) {
       setButtonWidth(buttonRef.current.offsetWidth);
     }
+
+    setTimeout(()=> {
+      setIsHidden(false);
+    }, 1000);
 
     const handleScroll = () => {
       if (window.innerWidth < 768) {

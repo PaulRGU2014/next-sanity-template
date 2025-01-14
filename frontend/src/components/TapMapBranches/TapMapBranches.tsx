@@ -3,6 +3,7 @@
 import styles from './TapMapBranches.module.scss';
 import Maps from './Maps';
 import { useState, useEffect, useRef} from 'react';
+import InViewAnim from '../../utils/InViewAnim/InViewAnim';
 
 interface TapMapBranchesProps {
   content?: any; // Replace 'any' with the appropriate type
@@ -15,10 +16,10 @@ export default function TapMapBranches({content}: TapMapBranchesProps) {
   return(
     <div className={styles.component}>
       <div className={styles.wrapper}>
-        <div className={styles.tabs}>
+        <InViewAnim><div className={styles.tabs}>
           <div className={`${styles.tab} ${activeTab==='USA' ? styles.isActive : ""}`} onClick={()=>setActiveTab('USA')}>USA</div>
           <div className={`${styles.tab} ${activeTab==='Uganda' ? styles.isActive : ""}`} onClick={()=>setActiveTab('Uganda')}>Uganda</div>
-        </div>
+        </div></InViewAnim>
         {activeTab === 'USA' && <Maps region={'USA'} />}
         {activeTab === 'Uganda' && <Maps region={'Uganda'} />}
       </div>
