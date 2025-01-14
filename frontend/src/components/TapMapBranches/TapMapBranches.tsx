@@ -20,8 +20,8 @@ export default function TapMapBranches({content}: TapMapBranchesProps) {
           <div className={`${styles.tab} ${activeTab==='USA' ? styles.isActive : ""}`} onClick={()=>setActiveTab('USA')}>USA</div>
           <div className={`${styles.tab} ${activeTab==='Uganda' ? styles.isActive : ""}`} onClick={()=>setActiveTab('Uganda')}>Uganda</div>
         </div></InViewAnim>
-        {activeTab === 'USA' && <Maps region={'USA'} />}
-        {activeTab === 'Uganda' && <Maps region={'Uganda'} />}
+        {activeTab === 'USA' && <Maps region={'USA'} content={content.branches_usa}/>}
+        {activeTab === 'Uganda' && <Maps region={'Uganda'} content={content.branches_uganda}/>}
       </div>
     </div>
   )

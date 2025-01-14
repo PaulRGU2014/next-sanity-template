@@ -7,12 +7,19 @@ import Image from 'next/image';
 import USMap from './assets/map_usa.svg';
 import UgandaMap from './assets/map_uganda.svg';
 
-
 interface TapMapBranchesProps {
-  region: any; // Replace 'any' with the appropriate type
+  region: string;
+  content: { branch_id: string, branch_name: string }[];
 }
 
-function Pin({ className, transitionDelay, onMouseEnter, onMouseLeave }: { className: string, transitionDelay?: number, onMouseEnter?: () => void, onMouseLeave?: () => void }) {
+interface PinProps {
+  className: string;
+  transitionDelay?: number;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+function Pin({ className, transitionDelay, onMouseEnter, onMouseLeave }: PinProps) {
   return (
     <div className={className} style={{ transitionDelay: `${transitionDelay}ms` }} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <svg stroke="#D00000" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="50px" width="50px" xmlns="http://www.w3.org/2000/svg">
@@ -23,9 +30,40 @@ function Pin({ className, transitionDelay, onMouseEnter, onMouseLeave }: { class
   )
 }
 
-export default function Maps({ region }: TapMapBranchesProps) {
-  const [activeSpot, setActiveSpot] = useState('')
-  const [isLoaded, setIsLoaded] = useState(false)
+interface Pin {
+  className: string;
+  spot: string;
+  delay: number;
+}
+
+function renderPins(pins: Pin[], activeSpot: string, isLoaded: boolean, setActiveSpot: (spot: string) => void) {
+  return pins.map(({ className, spot, delay }) => (
+    <Pin
+      key={spot}
+      className={`${className} ${activeSpot === spot ? styles.isActive : ''}`}
+      transitionDelay={isLoaded === false ? delay : 0}
+      onMouseEnter={() => setActiveSpot(spot)}
+      onMouseLeave={() => setActiveSpot('')}
+    />
+  ));
+}
+
+function renderList(content: { branch_id: string, branch_name: string }[], activeSpot: string, setActiveSpot: (spot: string) => void) {
+  return content.map((branch, index) => (
+    <li
+      key={index}
+      className={`${styles.list_each} ${activeSpot === branch.branch_id ? styles.isActive : ''}`}
+      onMouseEnter={() => setActiveSpot(branch.branch_id)}
+      onMouseLeave={() => setActiveSpot('')}
+    >
+      {branch.branch_name}
+    </li>
+  ));
+}
+
+export default function Maps({ region, content }: TapMapBranchesProps) {
+  const [activeSpot, setActiveSpot] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -53,12 +91,27 @@ export default function Maps({ region }: TapMapBranchesProps) {
     };
   }, []);
 
-  if (region === 'USA') {
-    return (
-      <InViewAnim><div className={styles.component} ref={mapRef}>
+  const pinsUSA = [
+    { className: styles.pin_az, spot: 'az', delay: 500 },
+    { className: styles.pin_lincoln, spot: 'lincoln', delay: 550 },
+    { className: styles.pin_omaha, spot: 'omaha', delay: 600 },
+    { className: styles.pin_stc, spot: 'stc', delay: 650 },
+    { className: styles.pin_desMoines, spot: 'desMoines', delay: 700 },
+    { className: styles.pin_tx, spot: 'tx', delay: 750 },
+    { className: styles.pin_nc, spot: 'nc', delay: 800 },
+    { className: styles.pin_nh, spot: 'nh', delay: 850 },
+  ];
+
+  const pinsUganda = [
+    { className: styles.pin_kampala, spot: 'kampala', delay: 500 },
+  ];
+
+  return (
+    <InViewAnim>
+      <div className={styles.component} ref={mapRef}>
         <div className={styles.map}>
           <Image
-            src={USMap}
+            src={region === 'USA' ? USMap : UgandaMap}
             alt='image'
             style={{
               objectFit: 'contain',
@@ -66,101 +119,12 @@ export default function Maps({ region }: TapMapBranchesProps) {
             }}
             sizes="100%"
           />
-          {[
-            { className: styles.pin_az, spot: 'az', delay: 500 },
-            { className: styles.pin_lincoln, spot: 'lincoln', delay: 550 },
-            { className: styles.pin_omaha, spot: 'omaha', delay: 600 },
-            { className: styles.pin_stc, spot: 'stc', delay: 650 },
-            { className: styles.pin_desMoines, spot: 'desMoines', delay: 700 },
-            { className: styles.pin_tx, spot: 'tx', delay: 750 },
-            { className: styles.pin_nc, spot: 'nc', delay: 800 },
-            { className: styles.pin_nh, spot: 'nh', delay: 850 },
-          ].map(({ className, spot, delay }) => (
-            <Pin
-              key={spot}
-              className={`${className} ${activeSpot === spot ? styles.isActive : ''}`}
-              transitionDelay={isLoaded === false ? delay : 0}
-              onMouseEnter={() => setActiveSpot(spot)}
-              onMouseLeave={() => setActiveSpot('')}
-            />
-          ))}
+          {region === 'USA' ? renderPins(pinsUSA, activeSpot, isLoaded, setActiveSpot) : renderPins(pinsUganda, activeSpot, isLoaded, setActiveSpot)}
         </div>
         <ul className={styles.list}>
-          <li className={`${styles.list_each} ${activeSpot === 'omaha' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('omaha')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Omaha, Nebraska
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'lincoln' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('lincoln')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Lincoln, Nebraska
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'desMoines' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('desMoines')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Des Moines, Iowa
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'nh' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('nh')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Manchester, New Hampshire
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'az' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('az')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Phoenix, Arizona
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'nc' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('nc')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Greensboro, North Carolina
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'stc' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('stc')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            St. Cloud, Minnesota
-          </li>
-          <li className={`${styles.list_each} ${activeSpot === 'tx' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('tx')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Dallas, Texas
-          </li>
+          {renderList(content, activeSpot, setActiveSpot)}
         </ul>
-      </div></InViewAnim>
-    )
-  } else if (region === 'Uganda') {
-    return (
-      <InViewAnim><div className={styles.component} ref={mapRef}>
-        <div className={styles.map}>
-          <Image
-            src={UgandaMap}
-            alt='image'
-            style={{
-              objectFit: 'contain',
-              objectPosition: 'center'
-            }}
-            sizes="100%"
-          />
-          <Pin className={`${styles.pin_kampala} ${activeSpot === 'kampala' ? styles.isActive : ''}`} transitionDelay={500} />
-        </div>
-        <ul className={styles.list}>
-          <li className={`${styles.list_each} ${activeSpot === 'kampala' ? styles.isActive : ''}`}
-            onMouseEnter={() => setActiveSpot('kampala')}
-            onMouseLeave={() => setActiveSpot('')}
-          >
-            Kampala, Uganda
-          </li>
-        </ul>
-      </div></InViewAnim>
-    )
-  }
+      </div>
+    </InViewAnim>
+  );
 }
