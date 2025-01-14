@@ -1,1 +1,7 @@
- 
+@use '../../scss/helpers/import' as *;
+
+
+.content{
+  overflow: hidden;
+  transition: all 0.5s $ease-out-quint 0s;
+}
