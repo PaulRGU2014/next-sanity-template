@@ -16,7 +16,6 @@
   }
   @include scroll-animation(
     $anim: fromTop,
-    $sequence: 100ms,
     $speed: 1000ms,
     $delay: 250ms
   );
