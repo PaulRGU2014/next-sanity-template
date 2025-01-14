@@ -199,7 +199,8 @@
 }
 
 .list {
-    width: 40%;
+  padding: 0;
+  width: 40%;
   @include scroll-animation(
     $anim: fromLeft,
     $delay: 250ms,

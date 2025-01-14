@@ -7,13 +7,14 @@ interface AccordionItemProps {
   content: React.ReactNode;
   expandedIndex: number | null;
   isToggle: boolean;
+  hasToggle?: boolean;
   className?: string;
   toggleAccordion: (index: number) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }
 
-const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, content, expandedIndex, isToggle, className, toggleAccordion, onMouseEnter, onMouseLeave }) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, content, expandedIndex, isToggle, hasToggle, className, toggleAccordion, onMouseEnter, onMouseLeave }) => {
   const accordionCollapsible = useRef<HTMLDivElement>(null);
 
   return (
@@ -23,20 +24,14 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, content, ex
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className={styles.accordionList}>
-        <div
-          className={
-            expandedIndex === index && isToggle
-              ? styles.toggleOpen
-              : styles.toggleClose
-          }
-        />
+      <div className={`${styles.accordionList} ${hasToggle ? "" : styles.noToggle} ${expandedIndex === index && isToggle
+        ? styles.toggleOpen
+        : ""}`}>
         {title}
       </div>
       <div
-        className={`${styles.content} ${className} ${
-          expandedIndex === index && isToggle ? styles.open : styles.close
-        }`}
+        className={`${styles.content} ${className} ${expandedIndex === index && isToggle ? styles.open : styles.close
+          }`}
         ref={accordionCollapsible}
         style={{
           maxHeight:

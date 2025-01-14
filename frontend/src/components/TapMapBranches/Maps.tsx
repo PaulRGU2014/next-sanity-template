@@ -69,6 +69,7 @@ function renderList(content: { branch_id: string, branch_name: string, body: str
         content={branch.body}
         expandedIndex={0}
         isToggle={true}
+        hasToggle={true}
         toggleAccordion={() => { }}
       />
     </Accordion>
