@@ -100,6 +100,7 @@ export default defineConfig({
                     //appendHere
   S.documentTypeListItem("hardcodedBlocks"),
   S.documentTypeListItem("richTextComp"),
+  S.documentTypeListItem("tapMapBranches"),
   S.documentTypeListItem("twoColumnSlider"),
                   ])
               ),

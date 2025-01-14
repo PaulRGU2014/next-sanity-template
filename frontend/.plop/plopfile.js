@@ -18,36 +18,14 @@ module.exports = (plop) => {
       const actions = [
         {
           type: 'add',
-          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
-          templateFile: './componentJs.hbs',
-        },
-        {
-          type: 'add',
-          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.module.scss',
-          templateFile: './componentScss.hbs',
-        },
-        {
-          type: 'add',
           path: '../src/sanity/schemaTypes/{{camelCase name}}.ts',
           templateFile: './sanityfield.hbs',
-        },
-        {
-          type: 'append',
-          path: '../src/components/ComponentLoader.tsx',
-          pattern: /\/\/importHere/,
-          template: "\timport {{pascalCase name}} from './{{pascalCase name}}/{{pascalCase name}}';",
         },
         {
           type: 'append',
           path: '../src/sanity/schemaTypes/index.ts',
           pattern: /\/\/importHere/,
           template: "\timport { {{camelCase name}} } from './{{camelCase name}}';",
-        },
-        {
-          type: 'append',
-          path: '../src/components/ComponentLoader.tsx',
-          pattern: /\/\/associateHere/,
-          template: "\t{{camelCase name}}: {{name}},",
         },
         {
           type: 'append',
@@ -60,6 +38,28 @@ module.exports = (plop) => {
           path: '../src/sanity/schemaTypes/pages.ts',
           pattern: /\/\/associateHere/,
           template: "\t{ type : '{{camelCase name}}' },",              
+        },
+        {
+          type: 'append',
+          path: '../src/components/ComponentLoader.tsx',
+          pattern: /\/\/associateHere/,
+          template: "\t{{camelCase name}}: {{name}},",
+        },
+        {
+          type: 'append',
+          path: '../src/components/ComponentLoader.tsx',
+          pattern: /\/\/importHere/,
+          template: "\timport {{pascalCase name}} from './{{pascalCase name}}/{{pascalCase name}}';",
+        },
+        {
+          type: 'add',
+          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
+          templateFile: './componentJs.hbs',
+        },
+        {
+          type: 'add',
+          path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.module.scss',
+          templateFile: './componentScss.hbs',
         },
       ];
 
