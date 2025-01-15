@@ -38,7 +38,6 @@
   z-index: 5;
   width: 50px;
   height: 50px;
-  padding: 5px;
   cursor: pointer;
   transform-origin: bottom center;
   transform: translateY(-30px);
@@ -65,137 +64,137 @@
   }
   &_az {
     @extend .pin;
-    top: calc(56% - 25px);
-    left: calc(20% - 25px);
+    top: calc(59% - 25px);
+    left: calc(21% - 25px);
   }
   &_desMoines {
     @extend .pin;
-    top: calc(29% - 25px);
-    left: calc(53% - 25px);
+    top: calc(31% - 25px);
+    left: calc(54% - 25px);
   }
   &_lincoln {
     @extend .pin;
-    top: calc(31% - 25px);
-    left: calc(42% - 25px);
+    top: calc(33% - 25px);
+    left: calc(43% - 25px);
   }
   &_nc {
     @extend .pin;
-    top: calc(47% - 25px);
-    left: calc(81% - 25px);
+    top: calc(49% - 25px);
+    left: calc(82% - 25px);
   }
   &_nh {
     @extend .pin;
-    top: calc(14% - 25px);
-    left: calc(89% - 25px);
+    top: calc(16% - 25px);
+    left: calc(90% - 25px);
   }
   &_omaha {
     @extend .pin;
-    top: calc(30% - 25px);
-    left: calc(48% - 25px);
+    top: calc(31% - 25px);
+    left: calc(49% - 25px);
   }
   &_stc {
     @extend .pin;
-    top: calc(16% - 25px);
-    left: calc(51% - 25px);
+    top: calc(18% - 25px);
+    left: calc(52% - 25px);
   }
   &_tx {
     @extend .pin;
     top: calc(73% - 25px);
-    left: calc(47% - 25px);
+    left: calc(49% - 25px);
   }
   &_kampala {
     @extend .pin;
-    top: calc(57% - 25px);
-    left: calc(53% - 25px);
+    top: calc(59% - 25px);
+    left: calc(54% - 25px);
   }
   @include responsive(md) {
     height: 40px;
     &_az {
-      top: calc(56% - 20px);
+      top: calc(59% - 20px);
     }
     &_desMoines {
-      top: calc(29% - 20px);
-    }
-    &_lincoln {
       top: calc(31% - 20px);
     }
+    &_lincoln {
+      top: calc(33% - 20px);
+    }
     &_nc {
-      top: calc(47% - 20px);
+      top: calc(49% - 20px);
     }
     &_nh {
-      top: calc(14% - 20px);
+      top: calc(16% - 20px);
     }
     &_omaha {
-      top: calc(30% - 20px);
+      top: calc(31% - 20px);
     }
     &_stc {
-      top: calc(16% - 20px);
+      top: calc(18% - 20px);
     }
     &_tx {
       top: calc(73% - 20px);
     }
     &_kampala {
-      top: calc(57% - 20px);
+      top: calc(59% - 20px);
     }
   }
   @include responsive(sm) {
     height: 30px;
     &_az {
-      top: calc(56% - 15px);
+      top: calc(59% - 15px);
     }
     &_desMoines {
-      top: calc(29% - 15px);
-    }
-    &_lincoln {
       top: calc(31% - 15px);
     }
+    &_lincoln {
+      top: calc(33% - 15px);
+    }
     &_nc {
-      top: calc(47% - 15px);
+      top: calc(49% - 15px);
     }
     &_nh {
-      top: calc(14% - 15px);
+      top: calc(16% - 15px);
     }
     &_omaha {
-      top: calc(30% - 15px);
+      top: calc(31% - 15px);
     }
     &_stc {
-      top: calc(16% - 15px);
+      top: calc(18% - 15px);
     }
     &_tx {
       top: calc(73% - 15px);
     }
     &_kampala {
-      top: calc(57% - 15px);
+      top: calc(59% - 15px);
     }
   }
   @include responsive(xs) {
     height: 20px;
     &_az {
-      top: calc(56% - 10px);
+      top: calc(59% - 10px);
     }
     &_desMoines {
-      top: calc(29% - 10px);
-    }
-    &_lincoln {
       top: calc(31% - 10px);
     }
+    &_lincoln {
+      top: calc(33% - 10px);
+    }
     &_nc {
-      top: calc(47% - 10px);
+      top: calc(49% - 10px);
     }
     &_nh {
-      top: calc(14% - 10px);
+      top: calc(16% - 10px);
     }
     &_omaha {
-      top: calc(30% - 10px);
+      top: calc(31% - 10px);
     }
     &_stc {
-      top: calc(16% - 10px);
+      top: calc(18% - 10px);
     }
     &_tx {
       top: calc(73% - 10px);
     }
     &_kampala {
-      top: calc(57% - 10px);
+      top: calc(59% - 10px);
     }
   }
 }
