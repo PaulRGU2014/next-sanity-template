@@ -20,6 +20,7 @@
     "@sanity/image-url": "^1.1.0",
     "@sanity/ui": "^2.10.12",
     "@sanity/vision": "^3.64.2",
+    "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.7",
     "graphql": "^16.10.0",
     "graphql-request": "^7.1.2",
