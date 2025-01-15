@@ -5,6 +5,8 @@ import '../scss/global.scss'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { CartProvider } from './../utils/CartContext/CartContext';
 import CookieBanner from './../utils/CookieBanner/CookieBanner';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
@@ -18,6 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <CookieBanner />
         </CartProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
       {/* <GoogleAnalytics gaId="G-606GP5V2VM" /> */}
     </html>
