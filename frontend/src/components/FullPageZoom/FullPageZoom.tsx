@@ -47,7 +47,7 @@ export default function FullPageZoom({ content }: { content: any }) {
             className={styles.reactPlayer}
             url={content.media_url}
             loop={true}
-            muted={true}
+            muted={content.is_video_muted}
             playing={true}
             playsinline={true}
             width='177vh'

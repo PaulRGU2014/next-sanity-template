@@ -56,6 +56,12 @@ export const fullPageZoom = defineType({
       })
     }),
     defineField({
+      name: 'is_video_muted',
+      title: 'Mute Video',
+      type: 'boolean',
+      hidden: ({ parent }) => parent?.media_source !== 'url' || parent?.media_type !== 'video',
+    }),
+    defineField({
       name: 'image',
       title: 'Image File',
       type: 'image',
