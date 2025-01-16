@@ -1,35 +1,35 @@
 
 //importHere
-	import TapMapBranches from './TapMapBranches/TapMapBranches';
-	import GalleryLogo from './GalleryLogo/GalleryLogo';
-	import LogoCarousel from './LogoCarousel/LogoCarousel';
-	import TextImageButton from './TextImageButton/TextImageButton';
-	import TwoColumnSlider from './TwoColumnSlider/TwoColumnSlider';
-	import ContentBubbles from './ContentBubbles/ContentBubbles';
-	import CtaTitleImg from './CtaTitleImg/CtaTitleImg';
-	import FullPageZoom from './FullPageZoom/FullPageZoom';
-	import HeroGallery from './HeroGallery/HeroGallery';
-	import HeroHalfPage from './HeroHalfPage/HeroHalfPage';
-	import Checkout from './Checkout/Checkout';
-	import HeroBannerImg from './HeroBannerImg/HeroBannerImg';
-  import Shopify from './Shopify/Shopify';
-	import CtasCarousel from './CtasCarousel/CtasCarousel';
-	import RichTextComp from './RichTextComp/RichTextComp';
-	import TextTwoImages from './TextTwoImages/TextTwoImages';
-	import FullPageHero from './FullPageHero/FullPageHero';
-  import Hero from "./Hero/Hero";
-  import Footer from "./Footer/Footer";
-  import ContactForm from "./ContactForm/ContactForm";
-  import GridLinksCarousel from './GridLinksCarousel/GridLinksCarousel';
+import TapMapBranches from './TapMapBranches/TapMapBranches';
+import GalleryLogo from './GalleryLogo/GalleryLogo';
+import LogoCarousel from './LogoCarousel/LogoCarousel';
+import TextImageButton from './TextImageButton/TextImageButton';
+import TwoColumnSlider from './TwoColumnSlider/TwoColumnSlider';
+import ContentBubbles from './ContentBubbles/ContentBubbles';
+import CtaTitleImg from './CtaTitleImg/CtaTitleImg';
+import FullPageZoom from './FullPageZoom/FullPageZoom';
+import HeroGallery from './HeroGallery/HeroGallery';
+import HeroHalfPage from './HeroHalfPage/HeroHalfPage';
+import Checkout from './Checkout/Checkout';
+import HeroBannerImg from './HeroBannerImg/HeroBannerImg';
+import Shopify from './Shopify/Shopify';
+import CtasCarousel from './CtasCarousel/CtasCarousel';
+import RichTextComp from './RichTextComp/RichTextComp';
+import TextTwoImages from './TextTwoImages/TextTwoImages';
+import FullPageHero from './FullPageHero/FullPageHero';
+import Hero from "./Hero/Hero";
+import Footer from "./Footer/Footer";
+import ContactForm from "./ContactForm/ContactForm";
+import GridLinksCarousel from './GridLinksCarousel/GridLinksCarousel';
 
 const hardcodedComponents = {
-//hardCodedHere
-	checkout: Checkout,
+  //hardCodedHere
+  checkout: Checkout,
   shopify: Shopify,
   contactForm: ContactForm,
 };
 
-function HardcodedComponent ({ block_title, ...props }: { block_title: keyof typeof hardcodedComponents }) {
+function HardcodedComponent({ block_title, ...props }: { block_title: keyof typeof hardcodedComponents }) {
   const Component = hardcodedComponents[block_title];
   if (!Component) {
     return <div>Component not found</div>;
@@ -38,23 +38,23 @@ function HardcodedComponent ({ block_title, ...props }: { block_title: keyof typ
 }
 
 const componentMap: { [key: string]: React.ComponentType<any> } = {
-//associateHere
-	tapMapBranches: TapMapBranches,
-	galleryLogo: GalleryLogo,
-	logoCarousel: LogoCarousel,
-	textImageButton: TextImageButton,
-	twoColumnSlider: TwoColumnSlider,
-	contentBubbles: ContentBubbles,
-	ctaTitleImg: CtaTitleImg,
-	fullPageZoom: FullPageZoom,
-	heroGallery: HeroGallery,
-	heroHalfPage: HeroHalfPage,
-	heroBannerImg: HeroBannerImg,
-	ctasCarousel: CtasCarousel,
+  //associateHere
+  tapMapBranches: TapMapBranches,
+  galleryLogo: GalleryLogo,
+  logoCarousel: LogoCarousel,
+  textImageButton: TextImageButton,
+  twoColumnSlider: TwoColumnSlider,
+  contentBubbles: ContentBubbles,
+  ctaTitleImg: CtaTitleImg,
+  fullPageZoom: FullPageZoom,
+  heroGallery: HeroGallery,
+  heroHalfPage: HeroHalfPage,
+  heroBannerImg: HeroBannerImg,
+  ctasCarousel: CtasCarousel,
   gridLinksCarousel: GridLinksCarousel,
-	richTextComp: RichTextComp,
-	textTwoImages: TextTwoImages,
-	fullPageHero: FullPageHero,
+  richTextComp: RichTextComp,
+  textTwoImages: TextTwoImages,
+  fullPageHero: FullPageHero,
   hero: Hero,
   footer: Footer,
   hardcodedBlocks: HardcodedComponent, // Add HardcodedComponent to the componentMap
@@ -79,10 +79,24 @@ export default function ComponentLoader({ components }: { components: any }) {
 
         // Check if the component is a hardcoded component
         if (component._type === "hardcodedBlocks") {
-          return <HardcodedComponent key={index} block_title={component.block_title} {...component} />;
+          return (
+            <div
+              key={index}
+              className={`component ${component._type}`}
+            >
+              <HardcodedComponent key={index} block_title={component.block_title} {...component} />
+            </div>
+          );
         }
 
-        return <Component key={component._id} {...component} content={componentContent} />;
+        return (
+          <div
+            key={index}
+            className={`component ${component._type}`}
+          >
+            <Component key={component._id} {...component} content={componentContent} />
+          </div>
+        );
       })}
     </>
   );
