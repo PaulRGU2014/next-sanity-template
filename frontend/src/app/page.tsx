@@ -8,11 +8,6 @@ import type { Metadata } from 'next'
 import DonateButton from '@/utils/DonateButton/DonateButton'
 import ErrorComponent from '@/utils/ErrorComponent/ErrorComponent'
 
-type FooterDataType = {
-  title: string;
-  links: { title: string; url: string }[];
-};
-
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
@@ -68,10 +63,6 @@ export default async function Page() {
   const menuData = await getMenuData(pathname);
   const defaultMenuData = await getDefaultMenuData();
   const defaultFooterData = await getDefaultFooterData();
-
-  if (!data) {
-    return <div className='loading'>Loading...</div>;
-  }
 
   if (!data || data.length === 0) {
     return (
