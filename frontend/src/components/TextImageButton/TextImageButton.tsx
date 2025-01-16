@@ -1,5 +1,3 @@
-"use client"
-
 import styles from './TextImageButton.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'
 import Image from '@/utils/ImageLoader/ImageLoader';

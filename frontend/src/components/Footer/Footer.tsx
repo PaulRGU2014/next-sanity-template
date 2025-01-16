@@ -1,5 +1,3 @@
-
-// import { useEffect, useState } from "react";
 import Link from '@/utils/LinkWrapper/LinkWrapper';
 import styles from './Footer.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'

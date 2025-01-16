@@ -1,5 +1,3 @@
-"use client"
-
 import styles from './RichTextComp.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'
 import RichTextUtil from './../../utils/RichText/RichText'

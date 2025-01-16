@@ -1,8 +1,5 @@
-'use client'
-
 import Image, { ImageProps} from "next/image";
 import { urlForImage } from "@/sanity/lib/client";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import React from 'react';
 
 interface ImageLoaderProps extends React.HTMLProps<HTMLDivElement> {
@@ -17,6 +14,9 @@ interface ImageLoaderProps extends React.HTMLProps<HTMLDivElement> {
 
 const ImageLoader = React.forwardRef<HTMLDivElement, ImageLoaderProps>(
   ({ className, style, src, alt, objectFit="cover", objectPosition, priority, ...rest }, ref) => {
+
+    const imgSrc = urlForImage(src).url();
+
     return (
       <div className={className} 
         style={style}
@@ -24,7 +24,7 @@ const ImageLoader = React.forwardRef<HTMLDivElement, ImageLoaderProps>(
         {...rest}
       >
         <Image 
-          src="src"
+          src={imgSrc}
           alt={alt ? alt : 'image'} 
           fill={true}
           sizes="100%"
@@ -32,9 +32,6 @@ const ImageLoader = React.forwardRef<HTMLDivElement, ImageLoaderProps>(
             objectFit: objectFit as React.CSSProperties['objectFit'],
             objectPosition: objectPosition as React.CSSProperties['objectPosition']
           }}
-          loader={({ width, quality = 100 }) =>
-            urlForImage(src).width(width).quality(quality).url()
-          }
           priority={priority ? priority : false}
         />
       </div>

@@ -1,5 +1,3 @@
-"use client"
-
 import styles from './TextTwoImages.module.scss';
 import Image from '@/utils/ImageLoader/ImageLoader';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'

@@ -1,4 +1,3 @@
-"use client"
 
 //importHere
 	import TapMapBranches from './TapMapBranches/TapMapBranches';
@@ -67,7 +66,7 @@ export default function ComponentLoader({ components }: { components: any }) {
     return null;
   }
 
-  console.log(components);
+  // console.log(components);
 
   return (
     <>
