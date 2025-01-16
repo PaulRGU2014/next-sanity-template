@@ -1,10 +1,8 @@
 @use "./helpers/import.scss" as *;
 @import "normalize.css";
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lato&family=Sarabun&display=swap");
-// @import "./helpers/import";
 
 html {
-  font-family: "Sarabun", sans-serif;
+  font-family: var(--font-lato), sans-serif;
 }
 
 body {
@@ -14,14 +12,12 @@ body {
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    // max-width: $max-width;
-    // margin: 0 auto;
     background-color: $white;
   }
 }
 
 h1 {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 96px;
   margin: 0 0 20px 0;
   font-weight: 400;
@@ -40,7 +36,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 72px;
   margin: 0 0 20px 0;
   font-weight: 400;
@@ -59,7 +55,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 54px;
   line-height: 150%;
   margin: 0 0 20px 0;
@@ -77,7 +73,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 40px;
   line-height: 150%;
   margin: 0 0 20px 0;
@@ -96,7 +92,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-weight: 400;
   font-size: 32px;
   line-height: 150%;
@@ -114,7 +110,7 @@ h5 {
 }
 
 h6 {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 24px;
   line-height: 150%;
   margin: 0 0 20px 0;
@@ -131,7 +127,7 @@ h6 {
 }
 
 a {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   text-decoration: none;
   font-size: 18px;
   line-height: 1.5;
@@ -146,14 +142,14 @@ a {
 }
 
 ul {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   margin: 0 0 20px 0;
   padding: 0 0 0 30px;
 }
 
 li,
 div {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   margin: 0;
   font-size: 18px;
   line-height: 1.5;
@@ -165,7 +161,7 @@ div {
 }
 
 p {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 18px;
   line-height: 1.5;
   margin: 0 0 20px 0;
@@ -176,7 +172,7 @@ p {
 }
 
 button {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-size: 18px;
   line-height: 1.5;
   margin: 0 0 20px 0;

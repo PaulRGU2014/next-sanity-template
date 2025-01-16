@@ -7,11 +7,18 @@ import { CartProvider } from './../utils/CartContext/CartContext';
 import CookieBanner from './../utils/CookieBanner/CookieBanner';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next';
+import { Lato } from 'next/font/google'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
+  const lato = Lato({
+    weight: ['100','300','400','700','900'],
+    subsets: ['latin'],
+    display: 'swap',
+  })
+
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning={true} className={lato.className}>
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
