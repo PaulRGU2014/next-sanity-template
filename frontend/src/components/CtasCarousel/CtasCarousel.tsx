@@ -4,8 +4,8 @@ import styles from './CtasCarousel.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'
 import Link from '@/utils/LinkWrapper/LinkWrapper';
 import Slider from 'react-slick';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface CtasCarouselProps {
   content: any; // Replace 'any' with the appropriate type

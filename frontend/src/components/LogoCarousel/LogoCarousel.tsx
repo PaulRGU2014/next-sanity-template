@@ -4,7 +4,8 @@ import styles from './LogoCarousel.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'
 import Image from '@/utils/ImageLoader/ImageLoader';
 import Slider from 'react-slick';
-import css from 'styled-jsx/css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface LogoCarouselProps {
   content: any; // Replace 'any' with the appropriate type

@@ -7,8 +7,6 @@ import Header from '@/components/Header/Header'
 import type { Metadata } from 'next'
 import DonateButton from '@/utils/DonateButton/DonateButton'
 import ErrorComponent from '@/utils/ErrorComponent/ErrorComponent'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 type FooterDataType = {
   title: string;
@@ -33,16 +31,43 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+async function getPageData(pathname: string) {
+  const query = `*[_type=="pages"&& page_url.current=="${pathname}"]{...,components[]->}`;
+  const data = await client.fetch(query);
+  return data;
+}
+
+async function getFooterData(pathname: string) {
+  const footerQuery = `*[_type=="pages"&& page_url.current=="${pathname}"]{footer->}`;
+  const footerData = await client.fetch(footerQuery);
+  return footerData;
+}
+
+async function getMenuData(pathname: string) {
+  const menuQuery = `*[_type=="pages"&& page_url.current=="${pathname}"]{menu->}`;
+  const menuData = await client.fetch(menuQuery);
+  return menuData;
+}
+
+async function getDefaultMenuData() {
+  const defaultMenuData = await client.fetch(`*[_type=="header"]{...}`);
+  return defaultMenuData;
+}
+
+async function getDefaultFooterData() {
+  const defaultFooterData = await client.fetch(`*[_type=="footer"]{...}`);
+  return defaultFooterData;
+}
+
 export default async function Page() {
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
-  const query = `*[_type=="pages"&& page_url.current=="${pathname}"]{...,components[]->}`;
-  const footerQuery = `*[_type=="pages"&& page_url.current=="${pathname}"]{footer->}`;
-  const data = await client.fetch(query);
-  const footerData = await client.fetch(footerQuery);
-  const menuData = await client.fetch(`*[_type=="pages"&& page_url.current=="${pathname}"]{menu->}`);
-  const defaultMenuData = await client.fetch(`*[_type=="header"]{...}`);
-  const defaultFooterData = await client.fetch(`*[_type=="footer"]{...}`);
+
+  const data = await getPageData(pathname);
+  const footerData = await getFooterData(pathname);
+  const menuData = await getMenuData(pathname);
+  const defaultMenuData = await getDefaultMenuData();
+  const defaultFooterData = await getDefaultFooterData();
 
   if (!data) {
     return <div className='loading'>Loading...</div>;
@@ -56,8 +81,6 @@ export default async function Page() {
       <Footer content={(defaultFooterData as any)[0]} />
     </>
   )}
-
-  console.log(data);
 
   return (
     <>
