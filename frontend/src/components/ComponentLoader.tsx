@@ -80,22 +80,12 @@ export default function ComponentLoader({ components }: { components: any }) {
         // Check if the component is a hardcoded component
         if (component._type === "hardcodedBlocks") {
           return (
-            <div
-              key={index}
-              className={`component ${component._type}`}
-            >
-              <HardcodedComponent key={index} block_title={component.block_title} {...component} />
-            </div>
+            <HardcodedComponent key={index} block_title={component.block_title} {...component} />
           );
         }
 
         return (
-          <div
-            key={index}
-            className={`component ${component._type}`}
-          >
-            <Component key={component._id} {...component} content={componentContent} />
-          </div>
+          <Component key={component._id} {...component} content={componentContent} />
         );
       })}
     </>
