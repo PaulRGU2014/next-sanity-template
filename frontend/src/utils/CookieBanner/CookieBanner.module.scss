@@ -19,18 +19,22 @@
 
   .buttons {
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 
     button {
-      background-color: $red-100;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      cursor: pointer;
-      border-radius: 5px;
+      @extend %button;
+      // background-color: $red-100;
+      // color: #fff;
+      // border: none;
+      // padding: 10px 20px;
+      // margin: 0 10px;
+      // cursor: pointer;
+      // border-radius: 5px;
 
       &:nth-child(2) {
-        background-color: $gray-600;
+        background-color:  $red-100;
       }
     }
   }

@@ -11,31 +11,31 @@ module.exports = (plop) => {
         type: 'list',
         name: 'type',
         message: 'What type of block component you want it to be?',
-        choices: ['Hero component', 'Carousel component', 'Media component', 'Other component'],
+        choices: ['Hero component', 'Carousel component', 'CTA component', 'Media component', 'Other component'],
       },
     ],
     actions: function(data) {
       const actions = [
         {
           type: 'add',
-          path: '../src/sanity/schemaTypes/{{camelCase name}}.ts',
+          path: '../../backend/src/sanity/schemaTypes/{{camelCase name}}.ts',
           templateFile: './sanityfield.hbs',
         },
         {
           type: 'append',
-          path: '../src/sanity/schemaTypes/index.ts',
+          path: '../../backend/src/sanity/schemaTypes/index.ts',
           pattern: /\/\/importHere/,
           template: "\timport { {{camelCase name}} } from './{{camelCase name}}';",
         },
         {
           type: 'append',
-          path: '../src/sanity/schemaTypes/index.ts',
+          path: '../../backend/src/sanity/schemaTypes/index.ts',
           pattern: /\/\/associateHere/,
           template: "{{camelCase name}},"
         },
         {
           type: 'append',
-          path: '../src/sanity/schemaTypes/pages.ts',
+          path: '../../backend/src/sanity/schemaTypes/pages.ts',
           pattern: /\/\/associateHere/,
           template: "\t{ type : '{{camelCase name}}' },",              
         },
@@ -66,31 +66,38 @@ module.exports = (plop) => {
       if (data.type === 'Hero component') {
         actions.push({
           type: 'append',
-          path: '../sanity.config.ts',
-          pattern: /\/\/addHere/,
-          template: '\tS.documentTypeListItem("{{camelCase name}}"),',
+          path: '../../backend//src/sanity/schemaTypes/pages.ts',
+          pattern: /\/\/heroComponent/,
+          template: '\t"{{camelCase name}}",',
         });
       } else if (data.type === 'Carousel component') {
         actions.push({
           type: 'append',
-          path: '../sanity.config.ts',
-          pattern: /\/\/associateHere/,
-          template: '\tS.documentTypeListItem("{{camelCase name}}"),',
+          path: '../../backend//src/sanity/schemaTypes/pages.ts',
+          pattern: /\/\/carouselComponent/,
+          template: '\t"{{camelCase name}}",',
+        });
+      } else if (data.type === 'CTA component') {
+        actions.push({
+          type: 'append',
+          path: '../../backend//src/sanity/schemaTypes/pages.ts',
+          pattern: /\/\/ctaComponent/,
+          template: '\t"{{camelCase name}}",',
         });
       } else if (data.type === 'Media component') {
         actions.push({
           type: 'append',
-          path: '../sanity.config.ts',
-          pattern: /\/\/assignHere/,
-          template: '\tS.documentTypeListItem("{{camelCase name}}"),',
+          path: '../../backend//src/sanity/schemaTypes/pages.ts',
+          pattern: /\/\/mediaComponent/,
+          template: '\t"{{camelCase name}}",',
         });
       }
       else if (data.type === 'Other component') {
         actions.push({
           type: 'append',
-          path: '../sanity.config.ts',
-          pattern: /\/\/appendHere/,
-          template: '\tS.documentTypeListItem("{{camelCase name}}"),',
+          path: '../../backend//src/sanity/schemaTypes/pages.ts',
+          pattern: /\/\/otherComponent/,
+          template: '\t"{{camelCase name}}",',
         });
       }
       return actions;

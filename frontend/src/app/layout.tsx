@@ -1,31 +1,19 @@
-import '../scss/global.scss'
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { CartProvider } from './../utils/CartContext/CartContext';
-import CookieBanner from './../utils/CookieBanner/CookieBanner';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from '@vercel/analytics/next';
-import { Lato } from 'next/font/google'
+import type { ReactNode } from "react";
+import { CartProvider } from "@/utils/CartContext/CartContext";
 
-const lato = Lato({
-  weight: ['100','300','400','700','900'],
-  subsets: ['latin' ,'latin-ext'],
-  display: 'swap',
-})
+type RootLayoutProps = {
+  children: ReactNode;
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning={true} className={lato.className}>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
+    <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body suppressHydrationWarning={true}>
-        <CartProvider>
-          {children}
-          <CookieBanner />
-        </CartProvider>
-        <SpeedInsights />
-        <Analytics />
+        <CartProvider>{children}</CartProvider>
       </body>
-      {/* <GoogleAnalytics gaId="G-606GP5V2VM" /> */}
     </html>
-  )
+  );
 }

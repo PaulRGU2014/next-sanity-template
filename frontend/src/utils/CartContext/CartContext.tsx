@@ -1,73 +1,76 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useMemo, useState } from "react";
 
-interface CartContextType {
-  cart: any[];
-  addToCart: (product: any, options: any) => void;
+export type CartItem = {
+  id: string;
+  title: string;
+  quantity: number;
+  images: { src: string }[];
+  variants: { id: string; price: { amount: string; currencyCode: string } }[];
+  options: Record<string, unknown>;
+};
+
+type CartContextValue = {
+  cart: CartItem[];
+  addToCart: (item: CartItem) => void;
+  removeFromCart: (id: string) => void;
+  updateCartItemQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
-  updateCartItemQuantity: (productId: string, quantity: number) => void;
-  removeFromCart: (productId: string) => void;
-}
+};
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext<CartContextValue | null>(null);
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<any[]>(() => {
-    if (typeof window !== 'undefined') {
-      const savedCart = localStorage.getItem('cart');
-      return savedCart ? JSON.parse(savedCart) : [];
-    }
-    return [];
-  });
+export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+  const value = useMemo<CartContextValue>(() => {
+    const addToCart = (item: CartItem) => {
+      setCart((prev) => {
+        const existing = prev.find((entry) => entry.id === item.id);
+        if (existing) {
+          return prev.map((entry) =>
+            entry.id === item.id
+              ? { ...entry, quantity: entry.quantity + item.quantity }
+              : entry
+          );
+        }
+        return [...prev, item];
+      });
+    };
+
+    const removeFromCart = (id: string) => {
+      setCart((prev) => prev.filter((entry) => entry.id !== id));
+    };
+
+    const updateCartItemQuantity = (id: string, quantity: number) => {
+      setCart((prev) =>
+        prev.map((entry) =>
+          entry.id === id ? { ...entry, quantity } : entry
+        )
+      );
+    };
+
+    const clearCart = () => {
+      setCart([]);
+    };
+
+    return {
+      cart,
+      addToCart,
+      removeFromCart,
+      updateCartItemQuantity,
+      clearCart,
+    };
   }, [cart]);
 
-  const addToCart = (product: any, options: any) => {
-    console.log('Adding to cart:', product, options);
-    setCart((prevCart) => {
-      const existingProductIndex = prevCart.findIndex((item) => item.id === product.id && JSON.stringify(item.options) === JSON.stringify(options));
-      if (existingProductIndex !== -1) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += 1;
-        return updatedCart;
-      } else {
-        return [...prevCart, { ...product, quantity: 1, options }];
-      }
-    });
-  };
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+}
 
-  const clearCart = () => {
-    setCart([]);
-  };
-
-  const updateCartItemQuantity = (productId: string, quantity: number) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
-  };
-
-  const removeFromCart = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-  };
-
-  // console.log('Cart state:', cart);
-
-  return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart, updateCartItemQuantity, removeFromCart }}>
-      {children}
-    </CartContext.Provider>
-  );
-};
-
-export const useCart = () => {
+export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("useCart must be used within CartProvider");
   }
   return context;
-};
+}

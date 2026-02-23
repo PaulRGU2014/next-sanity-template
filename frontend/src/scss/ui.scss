@@ -19,14 +19,16 @@
 
 %button {
   display: block;
-  background-color: $red-100;
+  background-color: $blue-200;
   color: $white;
   padding: 15px 30px;
   text-align: center;
+  border-radius: 8px;
+  border: 2px solid $blue-200;
   @extend %nav;
   &:hover {
-    color: $black;
-    background-color: $yellow-100;
+    color: $white;
+    background-color: $blue-400;
     transition: all 0.3s $ease-out-quint;
   }
   &:not(:hover) {

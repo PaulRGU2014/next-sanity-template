@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:meta";
 @use "../values.scss" as *;
 
 @mixin box-sizing {
@@ -19,28 +21,28 @@
 }
 
 @mixin responsive($size, $range: false, $min: false) {
-  @if type-of($size) == number {
+  @if meta.type-of($size) == number {
     @if $min {
       @media (min-width: $size) { @content; }
     } @else {
       @media (max-width: $size) { @content; }
     }
   } @else {
-    @if map-has-key($breakpoints, $size) {
-      $bp: map-get($breakpoints, $size);
-      @if type-of($bp) == number {
+    @if map.has-key($breakpoints, $size) {
+      $bp: map.get($breakpoints, $size);
+      @if meta.type-of($bp) == number {
         @media (max-width: $bp) { @content; }
-      } @else if map-has-key($bp, min) and map-has-key($bp, max) and $range {
-        @media (min-width: map-get($bp, min)) and (max-width: map-get($bp, max)) { @content; }
-      } @else if map-has-key($bp, max) {
-        @media (max-width: map-get($bp, max)) { @content; }
-      } @else if map-has-key($bp, min) {
-        @media (min-width: map-get($bp, min)) { @content; }
+      } @else if map.has-key($bp, min) and map.has-key($bp, max) and $range {
+        @media (min-width: map.get($bp, min)) and (max-width: map.get($bp, max)) { @content; }
+      } @else if map.has-key($bp, max) {
+        @media (max-width: map.get($bp, max)) { @content; }
+      } @else if map.has-key($bp, min) {
+        @media (min-width: map.get($bp, min)) { @content; }
       } @else {
         @error "RESPONSIVE: $breakpoint value for '#{$size}' is of an unsupported type.";
       }
     } @else {
-      @error "RESPONSIVE: '#{$size}' is not defined within $breakpoints. Currently defined breakpoints: '#{map-keys($breakpoints)}'";
+      @error "RESPONSIVE: '#{$size}' is not defined within $breakpoints. Currently defined breakpoints: '#{map.keys($breakpoints)}'";
     }
   }
 }

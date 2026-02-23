@@ -3,11 +3,6 @@ import styles from './Footer.module.scss';
 import InViewAnim from './../../utils/InViewAnim/InViewAnim'
 import { BsTelephone, BsEnvelope, BsFillPinMapFill } from "react-icons/bs";
 import Image from 'next/image';
-
-
-// get the content from sanity and pass it as props
-
-
 export default function Footer({ content }: { content?: any }) {
 
   const currentYear = new Date().getFullYear()

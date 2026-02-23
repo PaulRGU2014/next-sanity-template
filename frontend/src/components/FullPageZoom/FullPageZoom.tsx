@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import type { ComponentType } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ReactPlayer from 'react-player';
@@ -12,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function FullPageZoom({ content }: { content: any }) {
   const [isClient, setIsClient] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const Player = ReactPlayer as unknown as ComponentType<any>;
 
   useEffect(() => {
     setIsClient(true);
@@ -43,7 +45,7 @@ export default function FullPageZoom({ content }: { content: any }) {
     <InViewAnim>
       <div className={`${styles.component} ${content.theme==='light' ? styles.light : ''}`}>
         <div className={styles.media}>
-          <ReactPlayer
+          <Player
             className={styles.reactPlayer}
             url={content.media_url}
             loop={true}
